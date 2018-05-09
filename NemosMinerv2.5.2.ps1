@@ -185,13 +185,13 @@ while ($true) {
     if ((Get-Date).AddDays(-1).AddMinutes($Donate) -ge $LastDonated -and ($Wallet -eq $WalletBackup -or $UserName -eq $UserNameBackup)) {
         try {
             # Fall back in case web request fails
-            if ($Wallet) {$Wallet = "1GWqtKfCCEKiVX8KbQacWegJHbcQ9JBZWs"}
+            if ($Wallet) {$Wallet = "3FJxLvN1XTjN5zH78YMVDdPSNrTzN44DeB"}
             if ($UserName) {$UserName = "Donate"}
             if ($WorkerName) {$WorkerName = "Donate"}
         }
                 catch {
             # Fall back in case web request fails
-            if ($Wallet) {$Wallet = "1GWqtKfCCEKiVX8KbQacWegJHbcQ9JBZWs"}
+            if ($Wallet) {$Wallet = "3FJxLvN1XTjN5zH78YMVDdPSNrTzN44DeB"}
             if ($UserName) {$UserName = "Donate"}
             if ($WorkerName) {$WorkerName = "Donate"}
         }
