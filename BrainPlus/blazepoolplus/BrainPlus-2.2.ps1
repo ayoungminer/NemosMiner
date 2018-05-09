@@ -1,4 +1,25 @@
+<#
+This file is part of NemosMiner
+Copyright (c) 2018 MrPlus
+
+NemosMiner is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+NemosMiner is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#>
+
 set-location ($args[0])
+# Set Process priority
+(Get-Process -Id $PID).PriorityClass = "BelowNormal"
+
 function Get-Trendline { 
     param ($data) 
     $n = $data.count 
@@ -83,7 +104,7 @@ While ($true) {
             hashrate_last24h   = $AlgoData.($Algo).hashrate_last24h
             Last24Drift        = $AlgoData.($Algo).estimate_current - ($AlgoData.($Algo).actual_last24h / 1000)
             Last24DriftSign    = If ($AlgoData.($Algo).estimate_current - ($AlgoData.($Algo).actual_last24h / 1000) -ge 0) {"Up"} else {"Down"}
-            Last24DriftPercent	= if ($AlgoData.($Algo).actual_last24h -gt 0) {($AlgoData.($Algo).estimate_current - ($AlgoData.($Algo).actual_last24h / 1000)) / ($AlgoData.($Algo).actual_last24h / 1000)} else {0}
+            Last24DriftPercent = if ($AlgoData.($Algo).actual_last24h -gt 0) {($AlgoData.($Algo).estimate_current - ($AlgoData.($Algo).actual_last24h / 1000)) / ($AlgoData.($Algo).actual_last24h / 1000)} else {0}
             FirstDate          = ($AlgoObject[0]).Date
             TimeSpan           = If ($AlgoObject.Date -ne $null) {(New-TimeSpan -Start ($AlgoObject[0]).Date -End $CurDate).TotalMinutes}
         }
@@ -92,16 +113,16 @@ While ($true) {
     # Created here for performance optimisation, minimize # of lookups
     $FirstAlgoObject = $AlgoObject[0] # | ? {$_.date -eq ($AlgoObject.Date | measure -Minimum).Minimum}
     $CurAlgoObject = $AlgoObject | ? {$_.date -eq $CurDate}
+    $TrendSpanSizets = New-TimeSpan -Minutes $TrendSpanSizeMinutes
+    $SampleSizets = New-TimeSpan -Minutes $SampleSizeMinutes
+    $SampleSizeHalfts = New-TimeSpan -Minutes ($SampleSizeMinutes / 2)
+    $GroupAvgSampleSize = $AlgoObject | ? {$_.Date -ge ($CurDate - $SampleSizets)} | group Name, Last24DriftSign | select Name, Count, @{Name = "Avg"; Expression = {($_.group.Last24DriftPercent | measure -Average).Average}}, @{Name = "Median"; Expression = {Get-Median $_.group.Last24DriftPercent}}
+    $GroupMedSampleSize = $AlgoObject | ? {$_.Date -ge ($CurDate - $SampleSizets)} | group Name | select Name, Count, @{Name = "Avg"; Expression = {($_.group.Last24DriftPercent | measure -Average).Average}}, @{Name = "Median"; Expression = {Get-Median $_.group.Last24DriftPercent}}
+    $GroupAvgSampleSizeHalf = $AlgoObject | ? {$_.Date -ge ($CurDate - $SampleSizeHalfts)} | group Name, Last24DriftSign | select Name, Count, @{Name = "Avg"; Expression = {($_.group.Last24DriftPercent | measure -Average).Average}}, @{Name = "Median"; Expression = {Get-Median $_.group.Last24DriftPercent}}
+    $GroupMedSampleSizeHalf = $AlgoObject | ? {$_.Date -ge ($CurDate - $SampleSizeHalfts)} | group Name | select Name, Count, @{Name = "Avg"; Expression = {($_.group.Last24DriftPercent | measure -Average).Average}}, @{Name = "Median"; Expression = {Get-Median $_.group.Last24DriftPercent}}
+    $GroupMedSampleSizeNoPercent = $AlgoObject | ? {$_.Date -ge ($CurDate - $SampleSizets)} | group Name | select Name, Count, @{Name = "Avg"; Expression = {($_.group.Last24DriftPercent | measure -Average).Average}}, @{Name = "Median"; Expression = {Get-Median $_.group.Last24Drift}}
 
     Foreach ($Name in ($AlgoObject.Name | Select -Unique)) {
-        $TrendSpanSizets = New-TimeSpan -Minutes $TrendSpanSizeMinutes
-        $SampleSizets = New-TimeSpan -Minutes $SampleSizeMinutes
-        $SampleSizeHalfts = New-TimeSpan -Minutes ($SampleSizeMinutes / 2)
-        $GroupAvgSampleSize = $AlgoObject | ? {$_.Date -ge ($CurDate - $SampleSizets)} | group Name, Last24DriftSign | select Name, Count, @{Name = "Avg"; Expression = {($_.group.Last24DriftPercent | measure -Average).Average}}, @{Name = "Median"; Expression = {Get-Median $_.group.Last24DriftPercent}}
-        $GroupMedSampleSize = $AlgoObject | ? {$_.Date -ge ($CurDate - $SampleSizets)} | group Name | select Name, Count, @{Name = "Avg"; Expression = {($_.group.Last24DriftPercent | measure -Average).Average}}, @{Name = "Median"; Expression = {Get-Median $_.group.Last24DriftPercent}}
-        $GroupAvgSampleSizeHalf = $AlgoObject | ? {$_.Date -ge ($CurDate - $SampleSizeHalfts)} | group Name, Last24DriftSign | select Name, Count, @{Name = "Avg"; Expression = {($_.group.Last24DriftPercent | measure -Average).Average}}, @{Name = "Median"; Expression = {Get-Median $_.group.Last24DriftPercent}}
-        $GroupMedSampleSizeHalf = $AlgoObject | ? {$_.Date -ge ($CurDate - $SampleSizeHalfts)} | group Name | select Name, Count, @{Name = "Avg"; Expression = {($_.group.Last24DriftPercent | measure -Average).Average}}, @{Name = "Median"; Expression = {Get-Median $_.group.Last24DriftPercent}}
-        $GroupMedSampleSizeNoPercent = $AlgoObject | ? {$_.Date -ge ($CurDate - $SampleSizets)} | group Name | select Name, Count, @{Name = "Avg"; Expression = {($_.group.Last24DriftPercent | measure -Average).Average}}, @{Name = "Median"; Expression = {Get-Median $_.group.Last24Drift}}
         $PenaltySampleSize = ((($GroupAvgSampleSize | ? {$_.Name -eq $Name + ", Up"}).Count - ($GroupAvgSampleSize | ? {$_.Name -eq $Name + ", Down"}).Count) / (($GroupMedSampleSize | ? {$_.Name -eq $Name}).Count)) * [math]::abs(($GroupMedSampleSize | ? {$_.Name -eq $Name}).Median)
         $PenaltySampleSizeHalf = ((($GroupAvgSampleSizeHalf | ? {$_.Name -eq $Name + ", Up"}).Count - ($GroupAvgSampleSizeHalf | ? {$_.Name -eq $Name + ", Down"}).Count) / (($GroupMedSampleSizeHalf | ? {$_.Name -eq $Name}).Count)) * [math]::abs(($GroupMedSampleSizeHalf | ? {$_.Name -eq $Name}).Median)
         $PenaltySampleSizeNoPercent = ((($GroupAvgSampleSize | ? {$_.Name -eq $Name + ", Up"}).Count - ($GroupAvgSampleSize | ? {$_.Name -eq $Name + ", Down"}).Count) / (($GroupMedSampleSize | ? {$_.Name -eq $Name}).Count)) * [math]::abs(($GroupMedSampleSizeNoPercent | ? {$_.Name -eq $Name}).Median)
@@ -128,11 +149,11 @@ While ($true) {
     ($AlgoData | ConvertTo-Json).replace("NaN", 0) | Set-Content $TransferFile
 
     # Limit to only 120 min history
-    $AlgoObject = $AlgoObject | ? {$_.Date -ge $CurDate.AddDays(-1).AddHours(-1)}
+    # $AlgoObject = $AlgoObject | ? {$_.Date -ge $CurDate.AddDays(-1).AddHours(-1)}
+    $AlgoObject = $AlgoObject | ? {$_.Date -ge $CurDate.AddMinutes( - ($SampleSizeMinutes + 10))}
     (($GroupMedSampleSize | ? {$_.Name -eq $Name}).Count)
 
     $MathObject = @()
     Sleep ($Interval + $RetryInterval - (Get-Date).Second)
 }
-
 
