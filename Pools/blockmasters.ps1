@@ -31,7 +31,7 @@ $blockmasters_Request | Get-Member -MemberType NoteProperty | Select -ExpandProp
 	if ((Get-Stat -Name "$($Name)_$($blockmasters_Algorithm)_Profit") -eq $null) {$Stat = Set-Stat -Name "$($Name)_$($blockmasters_Algorithm)_Profit" -Value ([Double]$blockmasters_Request.$_.estimate_last24h / $Divisor)}
 	else {$Stat = Set-Stat -Name "$($Name)_$($blockmasters_Algorithm)_Profit" -Value ([Double]$blockmasters_Request.$_.estimate_current / $Divisor * (1 - ($blockmasters_Request.$_.fees / 100)))}
 
-	if ($Config.PoolsConfig.default.Wallet) {
+	if ($Wallet) {
 		[PSCustomObject]@{
 			Algorithm     = $blockmasters_Algorithm
 			Info          = $blockmasters

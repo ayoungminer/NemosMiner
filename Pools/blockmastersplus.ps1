@@ -32,11 +32,11 @@ $blockmasters_Request | Get-Member -MemberType NoteProperty | Select-Object -Exp
 	if ((Get-Stat -Name "$($Name)_$($blockmasters_Algorithm)_Profit") -eq $null) {$Stat = Set-Stat -Name "$($Name)_$($blockmasters_Algorithm)_Profit" -Value ([Double]$blockmasters_Request.$_.actual_last24h / $Divisor)}
 	else {$Stat = Set-Stat -Name "$($Name)_$($blockmasters_Algorithm)_Profit" -Value ([Double]$blockmasters_Request.$_.actual_last24h / $Divisor * (1 - ($blockmasters_Request.$_.fees / 100)))}
 
-	if ($Config.PoolsConfig.default.Wallet) {
+	if ($Wallet) {
 		[PSCustomObject]@{
 			Algorithm     = $blockmasters_Algorithm
 			Info          = $blockmasters
-			Price         = $Stat.Live * $Config.PoolsConfig.$ConfName.PricePenaltyFactor
+			Price         = $Stat.Live
 			StablePrice   = $Stat.Week
 			MarginOfError = $Stat.Fluctuation
 			Protocol      = "stratum+tcp"

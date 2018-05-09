@@ -28,7 +28,7 @@ $MineMoney_Request | Get-Member -MemberType NoteProperty | Select -ExpandPropert
 
     if ((Get-Stat -Name "$($Name)_$($MineMoney_Algorithm)_Profit") -eq $null) {$Stat = Set-Stat -Name "$($Name)_$($MineMoney_Algorithm)_Profit" -Value ([Double]$MineMoney_Request.$_.estimate_last24h / $Divisor * (1 - ($MineMoney_Request.$_.fees / 100)))}
     else {$Stat = Set-Stat -Name "$($Name)_$($MineMoney_Algorithm)_Profit" -Value ([Double]$MineMoney_Request.$_.estimate_current / $Divisor * (1 - ($MineMoney_Request.$_.fees / 100)))}
-	
+
     if ($Wallet) {
         [PSCustomObject]@{
             Algorithm     = $MineMoney_Algorithm
@@ -40,7 +40,7 @@ $MineMoney_Request | Get-Member -MemberType NoteProperty | Select -ExpandPropert
             Host          = $MineMoney_Host
             Port          = $MineMoney_Port
             User          = $Wallet
-            Pass          = "$WorkerName,c=$Passwordcurrency"
+		    Pass          = "ID=$Workername,c=$Passwordcurrency"
             Location      = $Location
             SSL           = $false
         }
