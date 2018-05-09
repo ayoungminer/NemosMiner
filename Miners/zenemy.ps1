@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-zenemy\z-enemy.exe"
-$Uri = "http://newera.dx.am/cme1.03.7z"
+$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/NVIDIA-zenemy/NVIDIA-zenemy.zip"
 
 $Commands = [PSCustomObject]@{
     "phi" = " -d $SelGPUCC --api-remote -i 20" #Phi
@@ -38,6 +38,7 @@ $Commands = [PSCustomObject]@{
     "x17" = " -d $SelGPUCC --api-remote -i 20 -N 3" #X17
     "x16r" = " -d $SelGPUCC --api-remote -i 20 -N 6" #X16r
     "x16s" = " -d $SelGPUCC --api-remote -i 20 -N 6" #X16s
+    "xevan" = " -d $SelGPUCC --api-remote -i 20" #Xevan
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
