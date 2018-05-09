@@ -6,19 +6,19 @@ $Uri = "https://github.com/KlausT/ccminer/releases/download/8.21/ccminer-821-cud
 $Commands = [PSCustomObject]@{
     #"bitcore" = "" #Bitcore
     #"blake2s" = "" #Blake2s
-    #"blakecoin" = " -d $SelGPUCC" #Blakecoin
+    "blakecoin" = " -d $SelGPUCC -q" #Blakecoin
     #"vanilla" = "" #BlakeVanilla
     #"cryptonight" = "" #Cryptonight
     #"decred" = "" #Decred
     #"equihash" = "" #Equihash
     #"ethash" = "" #Ethash
-    "groestl" = " -d $SelGPUCC" #Groestl(fastest)
+    "groestl" = " -d $SelGPUCC" #Groestl
     #"hmq1725" = "" #hmq1725
-    #"keccak" = " -d $SelGPUCC" #Keccak
+    #"keccak" = " -d $SelGPUCC -q" #Keccak
     #"lbry" = "" #Lbry
     #"lyra2v2" = " -d $SelGPUCC" #Lyra2RE2
     #"lyra2z" = "" #Lyra2z
-    #"myr-gr" = " -d $SelGPUCC" #MyriadGroestl
+    "myr-gr" = " -d $SelGPUCC" #MyriadGroestl
     "neoscrypt" = " -d $SelGPUCC" #NeoScrypt
     #"nist5" = " -d $SelGPUCC" #Nist5
     #"pascal" = "" #Pascal
@@ -31,7 +31,7 @@ $Commands = [PSCustomObject]@{
     #"x11" = "" #X11
     #"veltor" = "" #Veltor
     #"x11evo" = "" #X11evo
-    "c11" = " -d $SelGPUCC" #C11(alexis78 faster)
+    #"c11" = " -d $SelGPUCC" #C11
     #"yescrypt" = "" #Yescrypt
 }
 
@@ -41,12 +41,11 @@ $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | 
     [PSCustomObject]@{
         Type = "NVIDIA"
         Path = $Path
-        Arguments = "-b $($Variables.MinerAPITCPPort) -R 5 -a $_ -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_)"
-        HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Week}
+        Arguments = "-b 4068 -a $_ -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_)"
+        HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Day}
         API = "Ccminer"
-        Port = $Variables.MinerAPITCPPort
+        Port = 4068
         Wrap = $false
         URI = $Uri
- 		User = $Pools.(Get-Algorithm($_)).User
-   }
+    }
 }

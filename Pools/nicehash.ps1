@@ -30,20 +30,18 @@ $Locations | ForEach-Object {
         $Divisor = 1000000000
 
         $Stat = Set-Stat -Name "$($Name)_$($NiceHash_Algorithm)_Profit" -Value ([Double]$_.paying / $Divisor)
-
-		$ConfName = if ($Config.PoolsConfig.$Name -ne $Null){$Name}else{"default"}
-	
-        if ($Config.PoolsConfig.default.Wallet) {
+        
+        if ($Wallet) {
             [PSCustomObject]@{
                 Algorithm     = $NiceHash_Algorithm
                 Info          = $NiceHash_Coin
-                Price         = $Stat.Live*$Config.PoolsConfig.$ConfName.PricePenaltyFactor
+                Price         = $Stat.Live
                 StablePrice   = $Stat.Week
                 MarginOfError = $Stat.Week_Fluctuation
                 Protocol      = "stratum+tcp"
                 Host          = $NiceHash_Host
                 Port          = $NiceHash_Port
-                User          = "$($Config.PoolsConfig.$ConfName.Wallet).$($Config.PoolsConfig.$ConfName.WorkerName.Replace('ID=',''))"
+                User          = "$Wallet.$WorkerName"
                 Pass          = "x"
                 Location      = $Location
                 SSL           = $false
@@ -52,13 +50,13 @@ $Locations | ForEach-Object {
             [PSCustomObject]@{
                 Algorithm     = $NiceHash_Algorithm
                 Info          = $NiceHash_Coin
-                Price         = $Stat.Live*$Config.PoolsConfig.$ConfName.PricePenaltyFactor
+                Price         = $Stat.Live
                 StablePrice   = $Stat.Week
                 MarginOfError = $Stat.Week_Fluctuation
                 Protocol      = "stratum+ssl"
                 Host          = $NiceHash_Host
                 Port          = $NiceHash_Port
-                User          = "$($Config.PoolsConfig.$ConfName.Wallet).$($Config.PoolsConfig.$ConfName.WorkerName.Replace('ID=',''))"
+                User          = "$Wallet.$WorkerName"
                 Pass          = "x"
                 Location      = $Location
                 SSL           = $true

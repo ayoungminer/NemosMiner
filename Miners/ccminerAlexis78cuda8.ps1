@@ -7,7 +7,7 @@ $Commands = [PSCustomObject]@{
     #"hsr" = " -d $SelGPUCC --api-remote" #Hsr
     #"bitcore" = "" #Bitcore
     #"blake2s" = " -d $SelGPUCC --api-remote" #Blake2s
-    "blakecoin" = " -d $SelGPUCC" #Blakecoin(fastest)
+    #"blakecoin" = " -d $SelGPUCC --api-remote" #Blakecoin
     #"vanilla" = "" #BlakeVanilla
     #"cryptonight" = "" #Cryptonight
     #"veltor" = " -i 23 -d $SelGPUCC --api-remote" #Veltor
@@ -20,7 +20,7 @@ $Commands = [PSCustomObject]@{
     #"lbry" = " -d $SelGPUCC" #Lbry
     #"lyra2v2" = " -d $SelGPUCC --api-remote" #Lyra2RE2
     #"lyra2z" = "" #Lyra2z
-    "myr-gr" = " -d $SelGPUCC" #MyriadGroestl(fastest)
+    #"myr-gr" = " -d $SelGPUCC --api-remote" #MyriadGroestl
     #"neoscrypt" = " -i 15 -d $SelGPUCC" #NeoScrypt
     #"nist5" = " -d $SelGPUCC --api-remote" #Nist5
     #"pascal" = "" #Pascal
@@ -42,12 +42,11 @@ $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | 
     [PSCustomObject]@{
         Type = "NVIDIA"
         Path = $Path
-        Arguments = " -b $($Variables.MinerAPITCPPort) -a $_ -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_)"
-        HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Week}
+        Arguments = " -b 4068 -a $_ -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_)"
+        HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Day}
         API = "Ccminer"
-        Port = $Variables.MinerAPITCPPort
+        Port = 4068
         Wrap = $false
         URI = $Uri
-		User = $Pools.(Get-Algorithm($_)).User
     }
 }

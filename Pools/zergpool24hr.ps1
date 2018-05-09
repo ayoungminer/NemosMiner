@@ -2,7 +2,6 @@
 
 try {
     $zergpool_Request = Invoke-WebRequest "http://api.zergpool.com:8080/api/status" -UseBasicParsing -Headers @{"Cache-Control" = "no-cache"} | ConvertFrom-Json 
-    $zergpoolCoins_Request = Invoke-RestMethod "http://api.zergpool.com:8080/api/currencies" -UseBasicParsing -TimeoutSec 20 -ErrorAction Stop
 }
 catch { return }
 
@@ -10,46 +9,46 @@ if (-not $zergpool_Request) {return}
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
 
-$Location = "US"
+$Locations = "US", "Europe"
 
-$zergpool_Request | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | foreach {
-    $zergpool_Host = "$_.mine.zergpool.com"
-    $zergpool_Port = $zergpool_Request.$_.port
-    $zergpool_Algorithm = Get-Algorithm $zergpool_Request.$_.name
-    $zergpool_Coin = $zergpool_Request.$_.coins
-    $zergpool_Coinname = $zergpoolCoins_Request.$_.name
-        
-    $Divisor = 1000000000
+$Locations | ForEach {
+    $Location = $_
 
-    switch ($zergpool_Algorithm) {
-        "equihash" {$Divisor /= 1000}
-        "blake2s" {$Divisor *= 1000}
-        "blakecoin" {$Divisor *= 1000}
-        "decred" {$Divisor *= 1000}
-        "keccak" {$Divisor *= 1000}
-        "keccakc" {$Divisor *= 1000}
-    }
+	$zergpool_Request | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | foreach {
+	    $zergpool_Host = If ($Location -eq "Europe"){$Location + ".mine.zergpool.com"}else{"mine.zergpool.com"}
+	    $zergpool_Port = $zergpool_Request.$_.port
+	    $zergpool_Algorithm = Get-Algorithm $zergpool_Request.$_.name
+	    $zergpool_Coin = ""
 
-    if ((Get-Stat -Name "$($Name)_$($zergpool_Algorithm)_Profit") -eq $null) {$Stat = Set-Stat -Name "$($Name)_$($zergpool_Algorithm)_Profit" -Value ([Double]$zergpool_Request.$_.actual_last24h / $Divisor)}
-    else {$Stat = Set-Stat -Name "$($Name)_$($zergpool_Algorithm)_Profit" -Value ([Double]$zergpool_Request.$_.actual_last24h / $Divisor * (1 - ($zergpool_Request.$_.fees / 100)))}
+	    $Divisor = 1000000000
 
-    $ConfName = if ($Config.PoolsConfig.$Name -ne $Null) {$Name}else {"default"}
-    $PwdCurr = if ($Config.PoolsConfig.$ConfName.PwdCurrency) {$Config.PoolsConfig.$ConfName.PwdCurrency}else {$Config.Passwordcurrency}
+	    switch ($zergpool_Algorithm) {
+		"equihash" {$Divisor /= 1000}
+		"blake2s" {$Divisor *= 1000}
+		"blakecoin" {$Divisor *= 1000}
+		"decred" {$Divisor *= 1000}
+		"keccak" {$Divisor *= 1000}
+		"keccakc" {$Divisor *= 1000}
+	    }
 
-    if ($Config.PoolsConfig.default.Wallet) {
-        [PSCustomObject]@{
-            Algorithm     = $zergpool_Algorithm
-            Info          = "$zergpool_Coin $zergpool_Coinname"
-            Price         = $Stat.Live * $Config.PoolsConfig.$ConfName.PricePenaltyFactor
-            StablePrice   = $Stat.Week
-            MarginOfError = $Stat.Fluctuation
-            Protocol      = "stratum+tcp"
-            Host          = $zergpool_Host
-            Port          = $zergpool_Port
-            User          = $Config.PoolsConfig.$ConfName.Wallet
-            Pass          = "$($Config.PoolsConfig.$ConfName.WorkerName),c=$($PwdCurr)"
-            Location      = $Location
-            SSL           = $false
-        }
-    }
+	    if ((Get-Stat -Name "$($Name)_$($zergpool_Algorithm)_Profit") -eq $null) {$Stat = Set-Stat -Name "$($Name)_$($zergpool_Algorithm)_Profit" -Value ([Double]$zergpool_Request.$_.actual_last24h / $Divisor)}
+	    else {$Stat = Set-Stat -Name "$($Name)_$($zergpool_Algorithm)_Profit" -Value ([Double]$zergpool_Request.$_.actual_last24h / $Divisor * (1 - ($zergpool_Request.$_.fees / 100)))}
+
+	    if ($Wallet) {
+		[PSCustomObject]@{
+		    Algorithm     = $zergpool_Algorithm
+		    Info          = $zergpool
+		    Price         = $Stat.Live
+		    StablePrice   = $Stat.Week
+		    MarginOfError = $Stat.Fluctuation
+		    Protocol      = "stratum+tcp"
+		    Host          = $zergpool_Host
+		    Port          = $zergpool_Port
+		    User          = $Wallet
+		    Pass          = "$WorkerName,c=$Passwordcurrency"
+		    Location      = $Location
+		    SSL           = $false
+		}
+	    }
+	}
 }
