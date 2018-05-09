@@ -123,7 +123,7 @@ function Set-QuickEdit() {
     )
 }
 $CurrentProduct = "NemosMiner"
-$CurrentVersion = [Version]"2.5.2a"
+$CurrentVersion = [Version]"2.5.3"
 $ScriptStartDate = Get-Date
 # Fix issues on some SSL invokes following GitHub Supporting only TLSv1.2 on feb 22 2018
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
