@@ -123,7 +123,7 @@ function Set-QuickEdit() {
     )
 }
 $CurrentProduct = "NemosMiner"
-$CurrentVersion = [Version]"2.5.2"
+$CurrentVersion = [Version]"2.5.2a"
 $ScriptStartDate = Get-Date
 # Fix issues on some SSL invokes following GitHub Supporting only TLSv1.2 on feb 22 2018
 [Net.ServicePointManager]::SecurityProtocol = "tls12, tls11, tls"
@@ -157,7 +157,7 @@ Write-Host "Starting Brains for Plus..."
 $BrainJobs = @()
 $PoolName | foreach {
     $BrainPath = (Split-Path $MyInvocation.MyCommand.Path) + "\BrainPlus\" + $_
-    $BrainName = (".\BrainPlus\" + $_ + "\Brain-2.1.ps1")
+    $BrainName = (".\BrainPlus\" + $_ + "\BrainPlus-2.2.ps1")
     if (Test-Path $BrainName) {
         $BrainJobs += Start-Job -FilePath $BrainName -ArgumentList @($BrainPath)
     }
