@@ -1,4 +1,15 @@
 {
+    "allium": {
+	"name": "allium",
+	"port": 6433,
+	"coins": 1,
+	"fees": 0.5,
+	"hashrate":56063570,
+	"workers":4,
+	"estimate_current":"0.00003091",
+	"estimate_last24h":"0.00000968",
+	"actual_last24h":"0.04216",
+	"hashrate_last24h":3459474.2211},
     "bitcore": {
         "name": "bitcore",
         "port": 3556,
