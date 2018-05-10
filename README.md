@@ -1,10 +1,10 @@
-# NemosMiner-v2.5.2
-multi algo profit switching NVIDIA miner [![Version tag](https://img.shields.io/github/release/nemosminer/NemosMiner-v2.5.1.svg)](https://github.com/nemosminer/NemosMiner-v2.5.1/releases/latest) [![Version date tag](https://img.shields.io/github/release-date/nemosminer/NemosMiner-v2.5.1.svg)](https://github.com/nemosminer/NemosMiner-v2.5.1/releases/latest) [![Issues tag](https://img.shields.io/github/issues-raw/nemosminer/NemosMiner-v2.5.1.svg)](https://github.com/nemosminer/NemosMiner-v2.5.1/issues)
+# NemosMinerClassic-v2.5.3
+multi algo profit switching NVIDIA miner 
 ### 
  
  Instructions at bottom of the page.
 *****
-NemosMiner Monitors mining pools in real-time in order to find the most profitable Algo /
+NemosMinerClassic Monitors mining pools in real-time in order to find the most profitable Algo /
  Auto Benchmarks Each algo to get optimal speeds / 
  Fully automated / 
  Auto Downloads Miners
@@ -20,7 +20,7 @@ Additional features list
       If <AlgoName>.bat does not exist, will try to launch prerun/default.bat
       Use overclock with caution
  
-   ahashpoolplus / zergpoolplus / zpoolplus / blazepoolplus
+   ahashpoolplus / zergpoolplus / zpoolplus / blazepoolplus / blockmastersplus / hashrefineryplus / phiphipoolplus / starpoolplus
    
       Simply use -PoolName ahashpoolplus or other <pool>plus in start.bat
       Uses calculations based on 24hractual and currentestimate ahashpool prices to get more realistic estimate.
@@ -64,7 +64,8 @@ Additional features list
      Will show update meassage when a new version of NemosMiner is Avavilible 
 *****
  
- This is a free project feel free to donate be much appreciated:
+This is a free project, and is forked from github.com/nemosminer/nemosminer
+Feel free to donate to the original creators:
 
 aaronsace = 1MsrCoAt8qM53HUMsUxvy9gMj3QVbHLazH
 
@@ -99,11 +100,11 @@ https://www.microsoft.com/en-us/download/details.aspx?id=48145
 
 running multiple cards its recommended to increase Virtual Memory 64gb is optimal
 
-Requires nvidia driver newer than 388
+Requires nvidia driver 391.*
 
 Made For & Tested with 6x10603gb 6x1070 6x1070ti 6x1080ti (users have reported up to 12cards working have not tested myself)
 
-there is a 5minute per day fee (0.3%) that can be changed to minimum 1minute per day by adding -Donate 1 to startpoolname.bat
+there is a 15minute per day fee (1%)
 
 -ActiveMinerGainPct (percent of advantage that active miner has over candidates in term of profit (default 3%)
 
@@ -113,7 +114,9 @@ plus.bats.. eg. startahashpoolplus.bat  startzpoolplus.bat.. (uses advanced calc
    -Best switching rate
 normal .bats uses estimates.. eg. startahashpool.bat   startzpool.bat..   (uses current estimate API too request profit)
 
-this is a free project feel free to donate be much appreciated:
+
+This is a free project, and is forked from github.com/nemosminer/nemosminer
+Feel free to donate to the original creators:
 
 aaronsace = 1MsrCoAt8qM53HUMsUxvy9gMj3QVbHLazH
 
