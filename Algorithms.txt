@@ -55,6 +55,7 @@
     "timetravel":  "Timetravel",
     "tribus":  "Tribus",
     "vanilla":  "BlakeVanilla",
+    "vit":  "Vitalium",
     "vitalium":  "Vitalium",
     "veltor":  "Veltor",
     "x11":  "X11",
