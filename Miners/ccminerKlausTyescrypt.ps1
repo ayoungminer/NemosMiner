@@ -32,11 +32,11 @@ $Commands = [PSCustomObject]@{
     #"veltor" = "" #Veltor
     #"x11evo" = "" #X11evo
     #"x17" = "" #X17
-    "yescrypt" = " -d $SelGPUCC --api-remote" #yescrypt
-    "yescryptR8" = " -d $SelGPUCC --api-remote" #YescryptR8
-    "yescryptR16" = " -d $SelGPUCC --api-remote" #YescryptR16 #Yenten
-    "yescryptR16v2" = " -d $SelGPUCC --api-remote" #PPNP
-    #"keccakc" = " -d $SelGPUCC" #Keccakc(fastest)
+    "yescrypt" = " -d $SelGPUCC" #yescrypt
+    "yescryptR8" = " -d $SelGPUCC" #YescryptR8
+    "yescryptR16" = " -d $SelGPUCC" #YescryptR16 #Yenten
+    "yescryptR16v2" = " -d $SelGPUCC" #PPNP
+    #"keccakc" = " -d $SelGPUCC" #Keccakc
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
