@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-Alexis78\ccminer.exe"
-$Uri = "https://github.com/nemosminer/ccminerAlexis78/releases/download/3%2F3%2F2018/ccminer-Alexis78.zip"
+$Uri = "https://github.com/nemosminer/ccminerAlexis78/releases/download/Alexis78-v1.1/ccminerAlexis78-v1.1.7z"
 
 $Commands = [PSCustomObject]@{
     "hsr" = " -d $SelGPUCC --api-remote" #Hsr
@@ -17,8 +17,9 @@ $Commands = [PSCustomObject]@{
     #"groestl" = "" #Groestl
     #"hmq1725" = "" #hmq1725
     "keccak" = " -m 2 -i 29 -d $SelGPUCC" #Keccak
+    "keccakc" = " -i 29 -d $SelGPUCC --api-remote" #Keccakc
     #"lbry" = " -d $SelGPUCC --api-remote" #Lbry
-    "lyra2v2" = " -d $SelGPUCC --api-remote -i 23" #Lyra2RE2
+    "lyra2v2" = " -d $SelGPUCC --api-remote -i 23 -N 1" #Lyra2RE2
     #"lyra2z" = "" #Lyra2z
     #"myr-gr" = " -d $SelGPUCC --api-remote" #MyriadGroestl
     #"neoscrypt" = " -i 15 -d $SelGPUCC" #NeoScrypt
@@ -31,9 +32,10 @@ $Commands = [PSCustomObject]@{
     "skein" = " -d $SelGPUCC --api-remote" #Skein
     #"timetravel" = "" #Timetravel
     "c11" = " -i 21 -d $SelGPUCC --api-remote" #C11
+    #"veltor" = " -i 23 -d $SelGPUCC --api-remote" #Veltor
     #"x11evo" = "" #X11evo
     #"x11gost" = " -i 21 -d $SelGPUCC --api-remote" #X11gost
-    #"x17" = " -i 20 -d $SelGPUCC --api-remote" #X17
+    "x17" = " -i 20 -d $SelGPUCC --api-remote" #X17
     #"yescrypt" = "-d $SelGPUCC --api-remote" #Yescrypt
 }
 
