@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-ccminerenemyx16s\ccminer.exe"
-$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/NVIDIA-ccminerenemyx16s/NVIDIA-ccminerenemyx16s.zip"
+$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/NVIDIA-ccminerenemyx16s/NVIDIA-ccminerenemyx16s.7z"
 
 $Commands = [PSCustomObject]@{
     #"phi" = " -d $SelGPUCC" #Phi
