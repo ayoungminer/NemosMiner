@@ -4,7 +4,7 @@ $Path = ".\Bin\NVIDIA-zenemy\z-enemy.exe"
 $Uri = "https://github.com/ayoungminer/miner-bin/raw/master/NVIDIA-zenemy/NVIDIA-zenemy.7z"
 
 $Commands = [PSCustomObject]@{
-    "phi" = " -d $SelGPUCC --api-remote -i 20" #Phi
+    "phi" = " -d $SelGPUCC --api-remote -i 21" #Phi
     "bitcore" = " -d $SelGPUCC --api-remote -i 20" #Bitcore
     #"jha" = " -d $SelGPUCC" #Jha
     #"blake2s" = " -d $SelGPUCC" #Blake2s
