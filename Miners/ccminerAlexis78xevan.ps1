@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-Alexis78xevan\ccminer_x86.exe"
-$Uri = "https://github.com/nemosminer/ccminer-xevan/releases/download/ccminer-xevan/ccminer_x86.7z"
+$Uri = "https://github.com/nemosminer/ccminer-xevan/releases/download/Alexis78xevan/ccminerAlexis78Xevan.7z"
 
 $Commands = [PSCustomObject]@{
     #"bitcore" = " -d $SelGPUCC" #Bitcore
@@ -13,7 +13,7 @@ $Commands = [PSCustomObject]@{
     #"decred" = "" #Decred
     #"equihash" = "" #Equihash
     #"ethash" = "" #Ethash
-    #"xevan" = " -d $SelGPUCC --api-remote" #Xevan
+    #"xevan" = " -N 1 -d $SelGPUCC --api-remote" #Xevan
     #"groestl" = "" #Groestl
     #"hmq1725" = " -d $SelGPUCC" #hmq1725
     #"keccak" = " -d $SelGPUCC -m 2 --api-remote" #Keccak
