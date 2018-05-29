@@ -1,7 +1,7 @@
 . .\Include.ps1
 
-$Path = ".\Bin\NVIDIA-KlausTyescrypt\ccminer.exe"
-$Uri = "http://nemos.dx.am/opt/nemos/KlausTYescrypt.7z"
+$Path = ".\Bin\NVIDIA-ccmineryescrypt\ccminer.exe"
+$Uri = "http://nemos.dx.am/opt/nemos/CCMiner-Yescrypt.7z"
 
 $Commands = [PSCustomObject]@{
     #"bitcore" = "" #Bitcore
@@ -32,11 +32,11 @@ $Commands = [PSCustomObject]@{
     #"veltor" = "" #Veltor
     #"x11evo" = "" #X11evo
     #"x17" = "" #X17
-    "yescrypt" = " -d $SelGPUCC" #yescrypt
-    "yescryptR8" = " -d $SelGPUCC" #YescryptR8
-    "yescryptR16" = " -d $SelGPUCC" #YescryptR16 #Yenten
-    "yescryptR16v2" = " -d $SelGPUCC" #PPNP
-    #"keccakc" = " -d $SelGPUCC" #Keccakc
+    "yescrypt" = " -r 0 -d $SelGPUCC" #yescrypt
+    "yescryptR8" = " -r 0 -d $SelGPUCC"
+    "yescryptR16" = " -r 0 -d $SelGPUCC" #YescryptR16 #Yenten
+    "yescryptR16v2" = " -r 0 -d $SelGPUCC" #PPNP
+    #"keccakc" = " -d $SelGPUCC" #Keccakc(fastest)
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
