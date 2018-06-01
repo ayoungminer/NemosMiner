@@ -7,7 +7,7 @@ $Commands = [PSCustomObject]@{
     #"phi" = " -d $SelGPUCC" #Phi
     #"bitcore" = " -d $SelGPUCC" #Bitcore
     #"jha" = " -d $SelGPUCC" #Jha
-    "hsr" = " -r 0 -d $SelGPUCC --api-remote" #Hsr
+    #"hsr" = " -r 0 -d $SelGPUCC --api-remote" #Hsr
     #"blakecoin" = " -r 0 -d $SelGPUCC" #Blakecoin
     #"vanilla" = "" #BlakeVanilla
     #"cryptonight" = " -i 10.5 -l 8x120 --bfactor=8 -d $SelGPUCC --api-remote" #Cryptonight
@@ -15,7 +15,7 @@ $Commands = [PSCustomObject]@{
     #"equihash" = "" #Equihash
     #"ethash" = "" #Ethash
     #"groestl" = " -d $SelGPUCC" #Groestl
-    "hmq1725" = " -r 0 -d $SelGPUCC --api-remote" #hmq1725
+    "hmq1725" = " -r 0 -d $SelGPUCC -i 20 --api-remote" #hmq1725
     #"keccak" = "" #Keccak
     #"lbry" = " -d $SelGPUCC" #Lbry
     #"lyra2v2" = "" #Lyra2RE2

@@ -17,7 +17,7 @@ $Commands = [PSCustomObject]@{
     #"equihash" = "" #Equihash
     #"ethash" = "" #Ethash
     #"groestl" = " -d $SelGPUCC --api-remote --api-allow=0/0" #Groestl
-    "hmq1725" = " -d $SelGPUCC -i 20 --api-remote --api-allow=0/0" #hmq1725
+    #"hmq1725" = " -d $SelGPUCC -i 20 --api-remote --api-allow=0/0" #hmq1725
     #"keccakc" = " -d $SelGPUCC --api-remote --api-allow=0/0" #Keccakc
     "lbry" = " -d $SelGPUCC --api-remote --api-allow=0/0" #Lbry
     #"lyra2v2" = " -N 1 -d $SelGPUCC --api-remote --api-allow=0/0" #Lyra2RE2
