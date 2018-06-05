@@ -1,12 +1,12 @@
 . .\Include.ps1
 
-$Path = ".\Bin\NVIDIA-zenemy\z-enemy.exe"
-$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/NVIDIA-zenemy/NVIDIA-zenemy.7z"
+$Path = ".\Bin\NVIDIA-zenemy-x64\z-enemy.exe"
+$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/NVIDIA-zenemy-x64/NVIDIA-zenemy-x64.7z"
 
 $Commands = [PSCustomObject]@{
-    "phi" = " -d $SelGPUCC --api-remote -i 21" #Phi
-    "bitcore" = " -d $SelGPUCC --api-remote -i 20" #Bitcore
-    #"c11" = " -d $SelGPUCC --api-remote -i 20" #C11
+    #"phi" = " -d $SelGPUCC --api-remote -i 21" #Phi
+    #"bitcore" = " -d $SelGPUCC --api-remote -i 20" #Bitcore
+    "c11" = " -d $SelGPUCC --api-remote -i 20" #C11
     #"jha" = " -d $SelGPUCC" #Jha
     #"blake2s" = " -d $SelGPUCC" #Blake2s
     #"blakecoin" = " -d $SelGPUCC" #Blakecoin
@@ -25,23 +25,23 @@ $Commands = [PSCustomObject]@{
     #"neoscrypt" = " -d $SelGPUCC" #NeoScrypt
     #"nist5" = "" #Nist5
     #"pascal" = "" #Pascal
-    "polytimos" = " -d $SelGPUCC --api-remote -i 20" #Polytimos
+    #"polytimos" = " -d $SelGPUCC --api-remote -i 20" #Polytimos
     #"qubit" = "" #Qubit
     #"scrypt" = "" #Scrypt
     #"sia" = "" #Sia
     #"sib" = "" #Sib
     #"skein" = "" #Skein
     #"skunk" = " -d $SelGPUCC --api-remote" #Skunk
-    "timetravel" = " -d $SelGPUCC --api-remote -i 20" #Timetravel
-    "tribus" = " -d $SelGPUCC --api-remote -i 20" #Tribus
+    #"timetravel" = " -d $SelGPUCC --api-remote -i 20" #Timetravel
+    #"tribus" = " -d $SelGPUCC --api-remote -i 20" #Tribus
     #"x11" = "" #X11
     #"veltor" = "" #Veltor
     #"x11evo" = " -d $SelGPUCC" #X11evo
-    "x17" = " -d $SelGPUCC --api-remote -i 20 -N 3" #X17
-    "x16r" = " -d $SelGPUCC --api-remote -i 20 -N 6" #X16r
-    "x16s" = " -d $SelGPUCC --api-remote -i 20 -N 6" #X16s
-    "xevan" = " -d $SelGPUCC --api-remote -i 20" #Xevan
-    "vit" = " -d $SelGPUCC --api-remote -q" #Vitalium
+    #"x17" = " -d $SelGPUCC --api-remote -i 20 -N 3" #X17
+    #"x16r" = " -d $SelGPUCC --api-remote -i 20 -N 6" #X16r
+    #"x16s" = " -d $SelGPUCC --api-remote -i 20 -N 6" #X16s
+    #"xevan" = " -d $SelGPUCC --api-remote -i 20" #Xevan
+    #"vit" = " -d $SelGPUCC --api-remote -q" #Vitalium
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
