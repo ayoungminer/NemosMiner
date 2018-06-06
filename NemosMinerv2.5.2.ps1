@@ -40,7 +40,7 @@ param(
     [Parameter(Mandatory = $false)]
     [String]$Proxy = "", #i.e http://192.0.0.1:8080 
     [Parameter(Mandatory = $false)]
-    [Int]$Delay = 1, #seconds before opening each miner
+    [Int]$Delay = 3, #seconds before opening each miner
     [Parameter(Mandatory = $false)]
     [Int]$ActiveMinerGainPct = 5, # percent of advantage that active miner has over candidates in term of profit
     [Parameter(Mandatory = $false)]
