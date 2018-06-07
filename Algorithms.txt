@@ -1,6 +1,8 @@
 {
-    "allium":  "Allium",
     "sha256t":  "Sha256t",
+    "allium":  "Allium",
+    "vit":  "Vitalium",
+    "vitalium":  "Vitalium",
     "x16r":  "X16r",
     "x16s":  "X16s",
     "keccakc":  "Keccakc", 
@@ -55,8 +57,6 @@
     "timetravel":  "Timetravel",
     "tribus":  "Tribus",
     "vanilla":  "BlakeVanilla",
-    "vit":  "Vitalium",
-    "vitalium":  "Vitalium",
     "veltor":  "Veltor",
     "x11":  "X11",
     "x11gost":  "X11gost",
