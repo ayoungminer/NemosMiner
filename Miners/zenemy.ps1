@@ -4,6 +4,8 @@ $Path = ".\Bin\NVIDIA-zenemy\z-enemy.exe"
 $Uri = "https://github.com/ayoungminer/miner-bin/raw/master/NVIDIA-zenemy/NVIDIA-zenemy.7z"
 
 $Commands = [PSCustomObject]@{
+    "aeriumx" = " -r 0 -d $SelGPUCC -i 20" #Aolytimos
+    "polytimos" = " -d $SelGPUCC --api-remote -i 20" #Polytimos
     "phi" = " -d $SelGPUCC --api-remote -i 21" #Phi
     "bitcore" = " -d $SelGPUCC --api-remote -i 20" #Bitcore
     #"c11" = " -d $SelGPUCC --api-remote -i 20" #C11
@@ -25,7 +27,6 @@ $Commands = [PSCustomObject]@{
     #"neoscrypt" = " -d $SelGPUCC" #NeoScrypt
     #"nist5" = "" #Nist5
     #"pascal" = "" #Pascal
-    "polytimos" = " -d $SelGPUCC --api-remote -i 20" #Polytimos
     #"qubit" = "" #Qubit
     #"scrypt" = "" #Scrypt
     #"sia" = "" #Sia
@@ -51,7 +52,7 @@ $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | 
         Type = "NVIDIA"
         Path = $Path
         Arguments = "-b 4068 -a $_ -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_)"
-        HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Day}
+        HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Day * .99} # substract 1% devfee
         API = "Ccminer"
         Port = 4068
         Wrap = $false
