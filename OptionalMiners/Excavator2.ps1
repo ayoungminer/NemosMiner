@@ -3,7 +3,7 @@
 $Threads = 2
 
 $Path = ".\Bin\Excavator2\excavator.exe"
-$Uri = "https://github.com/nicehash/excavator/releases/download/v1.4.4a/excavator_v1.4.4a_NVIDIA_Win64.zip"
+$Uri = "https://github.com/nicehash/excavator/releases/download/v1.5.4a/excavator_v1.5.4a_NVIDIA_Win64.zip"
 
 $Commands = [PSCustomObject]@{
     #"blake2s" = @() #Blake2s(alexis78 faster)
@@ -12,7 +12,7 @@ $Commands = [PSCustomObject]@{
     #"equihash" = @() #Equihash(dstm faster)
     #"lbry" = @() #Lbry
     "lyra2rev2" = @() #Lyra2RE2(fastest)
-    #"neoscrypt" = @() #NeoScrypt(fastest)
+    "neoscrypt" = @() #NeoScrypt(fastest)
     #"nist5" = @() #nist5(alexis78 faster)
     #"pascal" = @() #Pascal
 }
