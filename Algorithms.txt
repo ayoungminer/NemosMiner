@@ -61,6 +61,7 @@
     "x11":  "X11",
     "x11gost":  "X11gost",
     "x11evo":  "X11evo",
+    "x13":  "X13",
     "x17":  "X17",
     "xmr":  "CryptoNight",
     "yescrypt":  "Yescrypt",

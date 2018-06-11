@@ -8,6 +8,7 @@ $Commands = [PSCustomObject]@{
     "poly" = " -N 1 -r 0 -d $SelGPUCC --api-remote" #polytimos(fastest)
     #"bitcore" = "" #Bitcore
     "blake2s" = " -r 0 -d $SelGPUCC --api-remote" #Blake2s
+    "x13" = " -d $SelGPUCC -r 0 -i 20 -N 1" #X13
     #"blakecoin" = " -d $SelGPUCC --api-remote" #Blakecoin
     #"vanilla" = "" #BlakeVanilla
     #"cryptonight" = "" #Cryptonight
