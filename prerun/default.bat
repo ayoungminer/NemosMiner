@@ -5,5 +5,3 @@ echo prerun default file
 
 REM Example clock settings using nvidiaInspector update nvidiaInspector.exe path accordingly or place it in prerun directory
 REM !!! USE OC WITH CAUTION !!!
-
-REM nvidiaInspector.exe -setPowerTarget:0,100

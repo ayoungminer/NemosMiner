@@ -29,7 +29,7 @@ $Commands = [PSCustomObject]@{
     #"nist5" = " -d $SelGPUCC --api-remote --api-allow=0/0" #Nist5
     #"pascal" = "" #Pascal
     #"phi1612" = " -N 1 -d $SelGPUCC" #Phi (testing)
-    #"phi2" = " -N 1 -d $SelGPUCC" #Phi (testing)
+    "phi2" = " -N 1 -d $SelGPUCC -q" #Phi (testing)
     #"qubit" = "" #Qubit
     #"scrypt" = "" #Scrypt
     #"sha256t" = " -i 29 -r 0 -d $SelGPUCC" #Sha256t
