@@ -1,4 +1,5 @@
 {
+    "aeriumx": "Aergo",
     "allium":  "Allium",
     "anime":  "Anime",
     "animecoin":  "Anime",
