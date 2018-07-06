@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\ccminerDredge\CryptoDredge.exe"
-$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.5.0/CryptoDredge_0.5.0.zip"
+$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.6.0/CryptoDredge_0.6.0.zip"
 
 $Commands = [PSCustomObject]@{
     #"bitcore" = "" #Bitcore
