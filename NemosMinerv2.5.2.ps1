@@ -370,8 +370,10 @@ while ($true) {
             elseif ($_.Process.HasExited -eq $false) {
                 $_.Active += (Get-Date) - $_.Process.StartTime
                 $_.Process.CloseMainWindow() | Out-Null
+                $_.Process.CloseMainWindow() | Out-Null
                 Sleep 1
                 # simply "Kill with power"
+                Stop-Process $_.Process -Force | Out-Null
                 Stop-Process $_.Process -Force | Out-Null
                 Write-Host -ForegroundColor Yellow "closing current miner and switching"
                 Sleep 1
