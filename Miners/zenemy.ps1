@@ -1,12 +1,13 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-zenemy\z-enemy.exe"
-$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/NVIDIA-zenemy/NVIDIA-zenemy.7z"
+$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/zenemy/zenemy.7z"
 
 $Commands = [PSCustomObject]@{
     "aeriumx" = " -d $SelGPUCC -i 20" #Aolytimos
     "polytimos" = " -d $SelGPUCC --api-remote -i 20" #Polytimos
     "phi" = " -d $SelGPUCC --api-remote -i 21" #Phi
+    "phi2" = " -N 1 -d $SelGPUCC -q" #Phi2
     "bitcore" = " -d $SelGPUCC --api-remote -i 20" #Bitcore
     #"c11" = " -d $SelGPUCC --api-remote -i 20" #C11
     #"jha" = " -d $SelGPUCC" #Jha

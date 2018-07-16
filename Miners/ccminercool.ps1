@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-ccminercool\coolMiner-x64.exe"
-$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/NVIDIA-ccminercool/NVIDIA-ccminercool.7z"
+$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/ccminercool/ccminercool.7z"
 
 $Commands = [PSCustomObject]@{
     #"phi" = " -d $SelGPUCC --api-remote -i 21" #Phi

@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-zenemy-x64\z-enemy.exe"
-$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/NVIDIA-zenemy-x64/NVIDIA-zenemy-x64.7z"
+$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/zenemy-x64/zenemy-x64.7z"
 
 $Commands = [PSCustomObject]@{
     #"phi" = " -d $SelGPUCC --api-remote -i 21" #Phi
