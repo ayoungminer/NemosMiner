@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-EWBFv2\\miner.exe"
-$Uri = "http://nemos.dx.am/opt/nemos/EWBFEquihashv0.3.7z"
+$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/EWBFv2/EWBFv2.7z"
 
 $Commands = [PSCustomObject]@{
     "equihash144" = " --cuda_devices $($Config.SelGPUDSTM) --algo 144_5 --pers sngemPoW" #Equihash144
