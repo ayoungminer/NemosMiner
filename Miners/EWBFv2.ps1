@@ -4,8 +4,9 @@ $Path = ".\Bin\NVIDIA-EWBFv2\\miner.exe"
 $Uri = "https://github.com/ayoungminer/miner-bin/raw/master/EWBFv2/EWBFv2.7z"
 
 $Commands = [PSCustomObject]@{
-    "equihash144" = " --cuda_devices $($Config.SelGPUDSTM) --algo 144_5 --pers sngemPoW" #Equihash144
-    "equihash192" = " --cuda_devices $($Config.SelGPUDSTM) --algo 192_7 --pers ZERO_PoW" #Equihash192
+    "equihash144" = " --cuda_devices $SelGPUDSTM --algo 144_5 --pers sngemPoW" #Equihash144
+    "equihash192" = " --cuda_devices $SelGPUDSTM --algo 192_7 --pers ZERO_PoW" #Equihash192
+    "equihash144btcz" = " --cuda_devices $SelGPUDSTM --algo 144_5 --pers BitcoinZ" #Equihash144btcz
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
