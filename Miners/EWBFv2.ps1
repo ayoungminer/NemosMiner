@@ -13,8 +13,9 @@ If ("equihash" -in $Config.Algorithm) {
 }
 
 $Commands = [PSCustomObject]@{
-    "equihash144" = " --cuda_devices $SelGPUDSTM --algo 144_5 --pers sngemPoW" #Equihash144
+    "equihash144xsg" = " --cuda_devices $SelGPUDSTM --algo 144_5 --pers sngemPoW" #Equihash144xsg
     "equihash144btcz" = " --cuda_devices $SelGPUDSTM --algo 144_5 --pers BitcoinZ" #Equihash144btcz
+    "equihash144safe" = " --cuda_devices $SelGPUDSTM --algo 144_5 --pers Safecoin" #Equihash144safe
     "equihash144zel" = " --cuda_devices $SelGPUDSTM --algo 144_5 --pers ZelProof" #Equihash144zel
     "equihash192" = " --cuda_devices $SelGPUDSTM --algo 192_7 --pers ZERO_PoW" #Equihash192
     "equihash-btg" = "--cuda_devices $SelGPUDSTM --algo 144_5 --pers BgoldPoW" # Equihash-btg
