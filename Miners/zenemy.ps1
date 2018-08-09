@@ -19,6 +19,7 @@ $Commands = [PSCustomObject]@{
     #"equihash" = "" #Equihash
     #"ethash" = "" #Ethash
     #"groestl" = " -d $SelGPUCC" #Groestl
+    "hex" = " -d $SelGPUCC" #Hex
     #"hmq1725" = " -d $SelGPUCC" #hmq1725
     #"keccak" = "" #Keccak
     #"lbry" = " -d $SelGPUCC" #Lbry
