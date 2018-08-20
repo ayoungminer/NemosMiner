@@ -1,18 +1,18 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-trex\t-rex.exe"
-$Uri = "http://nemos.dx.am/opt/nemos/t-rex-0.5.7-win-cuda9.1.7z"
+$Uri = "http://nemos.dx.am/opt/nemos/t-rex-061.7z"
 
 $Commands = [PSCustomObject]@{
+    "c11" = "" #C11
     "hsr" = "" #Hsr
     "phi"= "" #Phi
-    #"phi2" = "" #Phi2
     "lyra2z" = "" #Lyra2z
+    "sonoa" = "" #SonoA
     "tribus" = "" #Tribus
-    "c11" = "" #C11
     "x17" = "" #X17
-    "x16s" = "" #X16s (testing)
-    "x16r" = "" #X16r (testing)
+    #"x16s" = "" #X16s
+    #"x16r" = "" #X16r
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
