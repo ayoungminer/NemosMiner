@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-trex\t-rex.exe"
-$Uri = "http://nemos.dx.am/opt/nemos/t-rex-061.7z"
+$Uri = "http://nemos.dx.am/opt/nemos/t-rex063.7z"
 
 $Commands = [PSCustomObject]@{
     "c11" = "" #C11
