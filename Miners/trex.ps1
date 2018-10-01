@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-trex\t-rex.exe"
-$Uri = "http://nemos.dx.am/opt/nemos/t-rex-0.6.9-win-cuda9.1.zip"
+$Uri = "http://nemos.dx.am/opt/nemos/t-rex-0.6.10-win-cuda9.1.zip"
 
 $Commands = [PSCustomObject]@{
     "balloon" = "" #Balloon
