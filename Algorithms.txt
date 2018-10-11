@@ -86,6 +86,7 @@
     "jha":  "JHA",
     "keccak":  "Keccak",
     "keccakc":  "KeccakC",
+    "lbk3":  "Lbk3",
     "lbry":  "Lbry",
     "luffa":  "Luffa",
     "lyra2":  "Lyra2RE",
