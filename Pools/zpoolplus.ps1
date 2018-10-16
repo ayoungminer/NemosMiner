@@ -9,8 +9,16 @@ catch { return }
 if (-not $Zpool_Request) {return}
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
+$HostSuffix = ".mine.zpool.ca"
+$PriceField = "actual_last24h"
+# $PriceField = "estimate_current"
+$DivisorMultiplier = 1000000
 
 $Location = "US"
+
+# Placed here for Perf (Disk reads)
+    $ConfName = if ($Config.PoolsConfig.$Name -ne $Null){$Name}else{"default"}
+    $PoolConf = $Config.PoolsConfig.$ConfName
 
 $Zpool_Request | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | ForEach-Object {
     $Zpool_Host = "$_.mine.zpool.ca"
@@ -18,19 +26,10 @@ $Zpool_Request | Get-Member -MemberType NoteProperty | Select-Object -ExpandProp
     $Zpool_Algorithm = Get-Algorithm $Zpool_Request.$_.name
     $Zpool_Coin = ""
 
-    $Divisor = 1000000000
-	
-    switch ($Zpool_Algorithm) {
-        "equihash" {$Divisor /= 1000}
-        "blake2s" {$Divisor *= 1000}
-        "blakecoin" {$Divisor *= 1000}
-        "decred" {$Divisor *= 1000}
-        "keccak" {$Divisor *= 1000}
-	    "keccakc" {$Divisor *= 1000}
-    }
+    $Divisor = 1000000000 * [Double]$Zpool_Request.$_.mbtc_mh_factor
 
-    if ((Get-Stat -Name "$($Name)_$($Zpool_Algorithm)_Profit") -eq $null) {$Stat = Set-Stat -Name "$($Name)_$($Zpool_Algorithm)_Profit" -Value ([Double]$Zpool_Request.$_.actual_last24h / $Divisor * (1 - ($Zpool_Request.$_.fees / 100)))}
-    else {$Stat = Set-Stat -Name "$($Name)_$($Zpool_Algorithm)_Profit" -Value ([Double]$Zpool_Request.$_.actual_last24h / $Divisor * (1 - ($Zpool_Request.$_.fees / 100)))}
+        if ((Get-Stat -Name "$($Name)_$($Zpool_Algorithm)_Profit") -eq $null) {$Stat = Set-Stat -Name "$($Name)_$($Zpool_Algorithm)_Profit" -Value ([Double]$Zpool_Request.$_.actual_last24h / $Divisor * (1 - ($Zpool_Request.$_.fees / 100)))}
+        else {$Stat = Set-Stat -Name "$($Name)_$($Zpool_Algorithm)_Profit" -Value ([Double]$Zpool_Request.$_.actual_last24h / $Divisor * (1 - ($Zpool_Request.$_.fees / 100)))}
 	
     if ($Wallet) {
         [PSCustomObject]@{
