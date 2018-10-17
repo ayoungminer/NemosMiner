@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-EWBFv2\\miner.exe"
-$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/EWBFv2/EWBFv2.7z"
+$Uri = "https://nemosminer.com/data/optional/EWBFEquihashminerv0.6.7z"
 
 # Automatically add Equihash coins if Equihash in algo list
 If ("equihash" -in $Config.Algorithm) {
@@ -16,6 +16,7 @@ $Commands = [PSCustomObject]@{
     "equihash144" = " --cuda_devices $SelGPUDSTM --algo 144_5 --pers auto" #Equihash144
     "equihash192" = " --cuda_devices $SelGPUDSTM --algo 192_7 --pers auto" #Equihash192
     "equihash96" = " --cuda_devices $SelGPUDSTM --algo 96_5 --pers auto" #Equihash96
+    "equihash-btg" = "--cuda_devices $SelGPUDSTM --algo 144_5 --pers BgoldPoW" #Equihash-btg
 
 }
 
