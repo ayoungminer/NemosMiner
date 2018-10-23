@@ -1,19 +1,22 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-trex\t-rex.exe"
-$Uri = "http://nemos.dx.am/opt/nemos/t-rex-0.7.0-win-cuda10.0.zip"
+$Uri = "https://nemosminer.com/data/optional/t-rex-0.7.1-win-cuda10.0.7z"
 
 $Commands = [PSCustomObject]@{
     "balloon" = "" #Balloon
     "bcd" = "" #BCD
     "bitcore" = "" #Bitcore
     "c11" = "" #C11
+    "hmq1725" = "" #Hmq1725
     "hsr" = "" #Hsr
     "lyra2z" = "" #Lyra2z
     "phi"= "" #Phi
     "polytimos" = "" #Poly
+    #"sha256t" = "" #Sha256t
     "skunk" = "" #Skunk
     "sonoa" = "" #SonoA
+    #"timetravel" = "" #Timetravel
     "tribus" = "" #Tribus
     "x17" = "" #X17
     #"x16s" = "" #X16s
