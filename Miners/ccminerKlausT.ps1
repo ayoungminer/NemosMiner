@@ -36,6 +36,7 @@ $Commands = [PSCustomObject]@{
     "yescryptR8" = " -r 0 -d $SelGPUCC"
     "yescryptR16" = " -r 0 -d $SelGPUCC" #YescryptR16 #Yenten
     "yescryptR16v2" = " -r 0 -d $SelGPUCC" #PPN
+    "yescryptR32" = " -i 12 -d $SelGPUCC" #YescryptR32
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
