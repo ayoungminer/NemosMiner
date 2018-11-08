@@ -1,7 +1,7 @@
 . .\Include.ps1
 
-$Path = ".\Bin\NVIDIA-CryptoDredge092\CryptoDredge.exe"
-$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.9.4/CryptoDredge_0.9.4_cuda_10.0_windows.zip"
+$Path = ".\Bin\NVIDIA-CryptoDredge\CryptoDredge.exe"
+$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.9.7/CryptoDredge_0.9.7_cuda_10.0_windows.zip"
 
 $Commands = [PSCustomObject]@{
     #"allium"            = " -a allium" #Allium (fastetst)
