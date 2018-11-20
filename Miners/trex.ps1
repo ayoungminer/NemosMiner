@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-trex\t-rex.exe"
-$Uri = "https://github.com/trexminer/T-Rex/releases/download/0.7.4/t-rex-0.7.4-linux-cuda10.0.tar.gz"
+$Uri = "https://github.com/trexminer/T-Rex/releases/download/0.8.0/t-rex-0.8.0-win-cuda10.0.zip"
 
 $Commands = [PSCustomObject]@{
     "balloon" = "" #Balloon
