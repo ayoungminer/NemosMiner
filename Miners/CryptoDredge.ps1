@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-CryptoDredge\CryptoDredge.exe"
-$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.10.0/CryptoDredge_0.10.0_cuda_10.0_windows.zip"
+$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.13.0/CryptoDredge_0.13.0_cuda_10.0_windows.zip"
 
 $Commands = [PSCustomObject]@{
     #"allium"            = " -a allium" #Allium (fastest)
@@ -17,6 +17,7 @@ $Commands = [PSCustomObject]@{
     #"cryptonightv7"     = " -a cryptonightv7" # CryptoNightV7(fastest)
     #"cryptonightmonero" = " -a cryptonightv7" # Cryptonightmonero(fastest)
     #"tribus"            = " -a tribus" #Tribus (fastest)
+    "exosis" = " -a exosis" #Exosis
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName

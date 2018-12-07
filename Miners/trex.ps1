@@ -1,13 +1,15 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-trex\t-rex.exe"
-$Uri = "https://github.com/trexminer/T-Rex/releases/download/0.8.0/t-rex-0.8.0-win-cuda10.0.zip"
+$Uri = "https://github.com/trexminer/T-Rex/releases/download/0.8.5/t-rex-0.8.5-win-cuda10.0.zip"
 
 $Commands = [PSCustomObject]@{
     "balloon" = "" #Balloon
     "bcd" = "" #BCD
     "bitcore" = "" #Bitcore
     "c11" = "" #C11
+    "dedal" = "" #Dedal
+    #"geek" = "" #Geekcash
     "hmq1725" = "" #Hmq1725
     "hsr" = "" #Hsr
     "lyra2z" = "" #Lyra2z
@@ -21,6 +23,7 @@ $Commands = [PSCustomObject]@{
     "x17" = "" #X17
     #"x16s" = "" #X16s
     #"x16r" = "" #X16r
+    #"x21s" = "" #X21s
     "x22i" = "" #Suqa
 }
 

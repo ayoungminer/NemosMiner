@@ -4,7 +4,7 @@
 
 $Path = ".\Bin\NVIDIA-Alexis78\ccminer.exe"
 
-$Uri = "https://github.com/nemosminer/ccminerAlexis78/releases/download/Alexis78-v1.2/ccminerAlexis78v1.2x32.7z"
+$Uri = "https://github.com/nemosminer/ccminerAlexis78/releases/download/Alexis78-v1.4/ccminerAlexis78v1.4x64.7z"
 
 
 
