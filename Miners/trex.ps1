@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-trex\t-rex.exe"
-$Uri = "https://github.com/trexminer/T-Rex/releases/download/0.8.6/t-rex-0.8.6-win-cuda10.0.zip"
+$Uri = "https://github.com/trexminer/T-Rex/releases/download/0.8.8/t-rex-0.8.8-win-cuda10.0.zip"
 
 $Commands = [PSCustomObject]@{
     "balloon" = "" #Balloon
@@ -23,8 +23,8 @@ $Commands = [PSCustomObject]@{
     "x17" = "" #X17
     #"x16s" = "" #X16s
     #"x16r" = "" #X16r
+    "x22i" = "" #X21i
     #"x21s" = "" #X21s
-    "x22i" = "" #Suqa
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
