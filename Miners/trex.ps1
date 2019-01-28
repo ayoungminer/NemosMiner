@@ -21,8 +21,8 @@ $Commands = [PSCustomObject]@{
     #"timetravel" = "" #Timetravel
     "tribus" = "" #Tribus
     "x17" = "" #X17
-    #"x16s" = "" #X16s
-    #"x16r" = "" #X16r
+    "x16s" = " -i 24" #X16s
+    "x16r" = " -i 24" #X16r
     "x22i" = "" #X21i
     #"x21s" = "" #X21s
 }

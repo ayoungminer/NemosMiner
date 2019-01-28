@@ -43,8 +43,8 @@ $Commands = [PSCustomObject]@{
     #"veltor" = "" #Veltor
     #"x11evo" = " -d $SelGPUCC" #X11evo
     #"x17" = " -d $SelGPUCC --api-remote -i 20 -N 3" #X17
-    "x16r" = " -d $SelGPUCC --api-remote -i 20 -N 6" #X16r
-    "x16s" = " -d $SelGPUCC --api-remote -i 20 -N 6" #X16s
+    #"x16r" = " -d $SelGPUCC --api-remote -i 20 -N 6" #X16r
+    #"x16s" = " -d $SelGPUCC --api-remote -i 20 -N 6" #X16s
     "xevan" = " -d $SelGPUCC --api-remote -i 20" #Xevan
     #"vit" = " -d $SelGPUCC --api-remote -q" #Vitalium
 }
