@@ -4,13 +4,12 @@ $Path = ".\Bin\NVIDIA-CryptoDredge\CryptoDredge.exe"
 $Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.16.2/CryptoDredge_0.16.2_cuda_10.0_windows.zip"
 
 $Commands = [PSCustomObject]@{
-    #"allium" = " -a allium" #Allium
+    "allium" = " --intensity 8 -a allium" #Allium
     #"blake2s" = " -a blake2s" #Blake2s
     #"cnv8" = " -a cnv8" #CryptoNightv8
     #"cryptonightheavy" = " -a cryptonightheavy" #CryptoNightHeavy
     #"cryptonightv7" = " -a cryptonightv7" #CryptoNightV7
     #"cryptonightmonero" = " -a cryptonightv7" #Cryptonightmonero
-    "exosis" = " -a exosis" #Exosis
     "hmq1725" = " --intensity 8 -a hmq1725" #Hmq1725
     "lbk3" = " -a lbk3 -i 4" #Lbk3
     #"lyra2v2" = " -a lyra2v2" #Lyra2RE2
@@ -18,14 +17,16 @@ $Commands = [PSCustomObject]@{
     #"lyra2z" = " -a lyra2z" #Lyra2z
     #"lyrarev3" = " -a lyrarev3" #Lyra2REv3 
     #"lyra2v3" = " -a lyrarev3" #Lyra2v3
-    "neoscrypt" = " -a neoscrypt" #NeoScrypt
-    #"phi" = " -a phi" #Phi
-    "phi2" = " -a phi2" #Phi2
+    "mtp" = " --intensity 8 -a mtp" #Mtp
+    "neoscrypt" = " --intensity 6 -a neoscrypt" #NeoScrypt
+    "phi" = " --intensity 8 -a phi" #Phi
+    "phi2" = " --intensity 8 -a phi2" #Phi2
     "pipe" = " -a pipe" #Pipe
     #"skein" = " -a skein" #Skein
-    #"skunk" = "" #Skunk
+    "skunk" = " --intensity 8 -a skunk" #Skunk
     #"tribus" = " -a tribus" #Tribus
     #"x22i" = " -a x22i" #X22i
+    "x22s" = " --intensity 8 -a x21s" #X21s
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
