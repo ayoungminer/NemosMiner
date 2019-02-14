@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 try {
-    $NiceHash_Request = Invoke-WebRequest "https://api.nicehash.com/api?method=simplemultialgo.info" -UseBasicParsing -Headers @{"Cache-Control" = "no-cache"} | ConvertFrom-Json 
+    $NiceHash_Request = Invoke-WebRequest "https://api.nicehash.com/api?method=simplemultialgo.info" -TimeoutSec 15 -UseBasicParsing -Headers @{"Cache-Control" = "no-cache"} | ConvertFrom-Json 
 }
 catch { return }
 
@@ -15,10 +15,12 @@ $Locations | ForEach-Object {
     $NiceHash_Location = $_
     
     switch ($NiceHash_Location) {
-        "eu" {$Location = "Europe"}
+        "eu" {$Location = "EU"}
         "usa" {$Location = "US"}
         "jp" {$Location = "JP"}
-        default {$Location = "Asia"}
+        "hk" {$Location = "HK"}
+        "in" {$Location = "IN"}
+        "br" {$Location = "BR"}
     }
     
     $NiceHash_Request.result.simplemultialgo | ForEach-Object {
