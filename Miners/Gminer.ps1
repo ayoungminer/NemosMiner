@@ -1,7 +1,7 @@
 . .\Include.ps1
  
-$Path = ".\Bin\NVIDIA-Gminer131\miner.exe"
-$Uri = "https://nemosminer.com/data/optional/gminer_1_31_minimal_windows64.7z"
+$Path = ".\Bin\NVIDIA-Gminer\miner.exe"
+$Uri = "https://nemosminer.com/data/optional/gminer_1_32_minimal_windows64.7z"
 $Commands = [PSCustomObject]@{
     "equihash144"  = " --devices $SelGPUDSTM --algo 144_5 --pers auto" #Equihash144 (fastest)
     "zhash"        = " --devices $SelGPUDSTM --algo 144_5 --pers auto" #Zhash (fastest)
@@ -16,13 +16,13 @@ $Commands = [PSCustomObject]@{
 $Port = $Variables.NVIDIAMinerAPITCPPort
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
 
-$Commands | Get-Member -MemberType NoteProperty | Select-Object -ExpandProperty Name | ForEach-Object {
+$Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | ForEach {
 	$Algo = Get-Algorithm($_)
     [PSCustomObject]@{
         Type      = "NVIDIA"
         Path      = $Path
         Arguments = "-t 95 --watchdog 0 --api 4068 --server $($Pools.($Algo).Host) --port $($Pools.($Algo).Port) --user $($Pools.($Algo).User) --pass $($Pools.($Algo).Pass)$($Commands.$_)"
-        HashRates = [PSCustomObject]@{($Algo) = $Stats."$($Name)_$($Algo)_HashRate".Day * .98} # substract 2% devfee
+        HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Day * .98} # substract 2% devfee
         API       = "gminer"
         Port      = 4068
         Wrap      = $false

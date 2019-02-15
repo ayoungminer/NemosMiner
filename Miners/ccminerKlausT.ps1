@@ -7,11 +7,11 @@ $Commands = [PSCustomObject]@{
     "lyra2v3" = " -a lyra2v3 -d $SelGPUCC" #Lyra2v3 -i 24 max
     "lyra2rev3" = " -a lyra2v3 -d $SelGPUCC" #Lyra2rev3 -i 24 max
     "neoscrypt" = " -i 17 -d $SelGPUCC" #NeoScrypt
-    "yescrypt" = " -i 12.5 -d $SelGPUCC" #Yescrypt
-    "yescryptR8" = " -i 12.5 -d $SelGPUCC" #YescryptR8
-    "yescryptR16" = " -i 12.5 -d $SelGPUCC" #YescryptR16
-    "yescryptR16v2" = " -i 12.5 -d $SelGPUCC" #YescryptR16v2
-    "yescryptR24" = " -i 12.5 -d $SelGPUCC" #YescryptR24
+    "yescrypt" = " -d $SelGPUCC" #Yescrypt
+    "yescryptR8" = " -d $SelGPUCC" #YescryptR8
+    "yescryptR16" = " -i 13.25 -d $SelGPUCC" #YescryptR16
+    "yescryptR16v2" = " -d $SelGPUCC" #YescryptR16v2
+    "yescryptR24" = " -d $SelGPUCC" #YescryptR24
     #"yescryptR32" = " -i 12.5 -d $SelGPUCC" #YescryptR32
 }
 
