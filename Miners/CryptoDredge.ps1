@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-CryptoDredge\CryptoDredge.exe"
-$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.16.2/CryptoDredge_0.16.2_cuda_10.0_windows.zip"
+$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.17.0/CryptoDredge_0.17.0_cuda_10.0_windows.zip"
 
 $Commands = [PSCustomObject]@{
     "allium" = " --intensity 8 -a allium" #Allium
@@ -10,10 +10,11 @@ $Commands = [PSCustomObject]@{
     #"cryptonightheavy" = " -a cryptonightheavy" #CryptoNightHeavy
     #"cryptonightv7" = " -a cryptonightv7" #CryptoNightV7
     #"cryptonightmonero" = " -a cryptonightv7" #Cryptonightmonero
+    #"grincuckaroo29" = " --intensity 8 -a cuckaroo29" #Grincuckaroo29
     "hmq1725" = " --intensity 8 -a hmq1725" #Hmq1725
     "lbk3" = " -a lbk3 -i 4" #Lbk3
     #"lyra2v2" = " -a lyra2v2" #Lyra2RE2
-    "lyra2vc0ban" = " -a lyra2vc0ban" #Lyra2vc0banHash
+    #"lyra2vc0ban" = " -a lyra2vc0ban" #Lyra2vc0banHash
     #"lyra2z" = " -a lyra2z" #Lyra2z
     #"lyrarev3" = " -a lyrarev3" #Lyra2REv3 
     #"lyra2v3" = " -a lyrarev3" #Lyra2v3

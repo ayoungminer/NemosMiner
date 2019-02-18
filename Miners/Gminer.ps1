@@ -10,7 +10,7 @@ $Commands = [PSCustomObject]@{
     "equihash96"   = " --devices $SelGPUDSTM --algo 96_5 --pers auto" #Equihash96 (fastest)
     #"beam"         = " --devices $SelGPUDSTM --algo 150_5 --pers Beam-PoW" #Equihash150 (Bminer faster)
     "grincuckaroo29"  = " --devices $SelGPUDSTM --algo grin29 --pers auto" #Grincuckaroo29 (fastest)
-   #"grincuckatoo31"  = " --devices $SelGPUDSTM --algo grin31 --pers auto" #Grincuckatoo31 requires 7.4GB VRam, will work on 8GB cards under Linux and Windows 7, will not work under Windows 10)
+   #"grincuckatoo31"  = " --devices $SelGPUDSTM --algo grin31 --pers auto" #Grincuckatoo31
  
 }
 $Port = $Variables.NVIDIAMinerAPITCPPort
