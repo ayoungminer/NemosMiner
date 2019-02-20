@@ -19,18 +19,17 @@ $Port = $Variables.NVIDIAMinerAPITCPPort
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
 
 $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | ForEach {
-	$Algo = Get-Algorithm($_)
     [PSCustomObject]@{
-        Type      = "NVIDIA"
-        Path      = $Path
-        Arguments = "-t 95 --watchdog 0 --api 4068 --server $($Pools.($Algo).Host) --port $($Pools.($Algo).Port) --user $($Pools.($Algo).User) --pass $($Pools.($Algo).Pass)$($Commands.$_)"
+        Type = "NVIDIA"
+        Path = $Path
+        Arguments = "-t 95 --watchdog 0 --api 4068 --server $($Pools.(Get-Algorithm($_)).Host) --port $($Pools.(Get-Algorithm($_)).Port) --user $($Pools.(Get-Algorithm($_)).User) --pass $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_)"
         HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Day * .98} # substract 2% devfee
-        API       = "gminer"
-        Port      = 4068
-        Wrap      = $false
-        URI       = $Uri    
-        User = $Pools.($Algo).User
-        Host = $Pools.($Algo).Host
-        Coin = $Pools.($Algo).Coin
+        API = "gminer"
+        Port = 4068
+        Wrap = $false
+        URI = $Uri    
+        User = $Pools.(Get-Algorithm($_)).User
+        Host = $Pools.(Get-Algorithm($_)).Host
+        Coin = $Pools.(Get-Algorithm($_)).Coin
     }
 }
