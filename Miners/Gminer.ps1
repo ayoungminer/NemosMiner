@@ -6,10 +6,10 @@ $Uri = "https://github.com/develsoftware/GMinerBetaRelease/releases/download/1.3
 $Commands = [PSCustomObject]@{
     "equihash144"  = " --devices $SelGPUDSTM --algo 144_5 --pers auto" #Equihash144
     "zhash"        = " --devices $SelGPUDSTM --algo 144_5 --pers auto" #Zhash
-    "equihash192"  = " --devices $SelGPUDSTM --algo 192_7 --pers ZERO_PoW" #Equihash192
-    "equihash-btg" = " --devices $SelGPUDSTM --algo 144_5 --pers BgoldPoW" # Equihash-btg
+    "equihash192"  = " --devices $SelGPUDSTM --algo 192_7 --pers auto" #Equihash192
+    "equihash-btg" = " --devices $SelGPUDSTM --algo 144_5 --pers auto" # Equihash-btg
     "equihash96"   = " --devices $SelGPUDSTM --algo 96_5 --pers auto" #Equihash96
-    #"beam"         = " --devices $SelGPUDSTM --algo 150_5 --pers Beam-PoW" #Equihash150
+    #"beam"         = " --devices $SelGPUDSTM --algo 150_5 --pers auto" #Equihash150
     "grincuckaroo29"  = " --devices $SelGPUDSTM --algo grin29 --pers auto" #Grincuckaroo29
     #"grincuckatoo31"  = " --devices $SelGPUDSTM --algo grin31 --pers auto" #Grincuckatoo31
  
