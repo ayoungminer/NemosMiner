@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-ccminermtp\ccminer.exe"
-$Uri = "https://github.com/nemosminer/ccminer/releases/download/1.1.15/ccminermtp.7z"
+$Uri = "https://github.com/nemosminer/ccminerMTP/releases/download/v1.1.14.1-mtp/ccminermtp.7z"
 
 $Commands = [PSCustomObject]@{
     #"mtp" = " -d $SelGPUCC" #mtp

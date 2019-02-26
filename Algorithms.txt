@@ -12,7 +12,7 @@
     "argon2d250":  "Argon2dCRDS",
     "argon2d4096":  "Argon2dUIS",
     "argon2d500":  "Argon2dDYN",
-    "astralhash":  "astralhash",
+    "astralhash":  "Astralhash",
     "axiom":  "Axiom",
     "balloon":  "Balloon",
     "bastion":  "Bastion",
