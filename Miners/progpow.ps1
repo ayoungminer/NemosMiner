@@ -1,6 +1,6 @@
 . .\Include.ps1
 
-$Path = ".\Bin\NVIDIA-progpowminer\progpowminer-cuda"
+$Path = ".\Bin\progpowminer0.16-FinalCuda10\Cuda 10\progpowminer-cuda.exe"
 $Uri = "https://nemosminer.com/data/optional/progpowminer0.16-FinalCuda10.7z"
 
 $Commands = [PSCustomObject]@{

@@ -4,7 +4,7 @@ $Path = ".\Bin\NVIDIA-ccminerxevan9\ccminer_x86.exe"
 $Uri = "https://github.com/nemosminer/ccminer-xevan/releases/download/ccminer-xevan/ccminer_x86.7z"
 
 $Commands = [PSCustomObject]@{
-    "xevan" = " -i 21 -R 1 -N 1 -d $SelGPUCC" #Xevan
+    "xevan" = " -i 21 -R 1 -N 2 -d $SelGPUCC" #Xevan
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
