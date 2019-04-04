@@ -9,7 +9,7 @@ $Commands = [PSCustomObject]@{
     "equihash192"  = " --devices $SelGPUDSTM --algo 192_7 --pers auto" #Equihash192
     "equihash-btg" = " --devices $SelGPUDSTM --algo 144_5 --pers BgoldPoW" # Equihash-btg
     "equihash96"   = " --devices $SelGPUDSTM --algo 96_5 --pers auto" #Equihash96
-    #"beam"         = " --devices $SelGPUDSTM --algo 150_5 --pers auto" #Equihash150
+    "beam"         = " --devices $SelGPUDSTM --algo 150_5 --pers auto" #Equihash150
     "grincuckaroo29"  = " --devices $SelGPUDSTM --algo grin29 --pers auto" #Grincuckaroo29
     #"grincuckatoo31"  = " --devices $SelGPUDSTM --algo grin31 --pers auto" #Grincuckatoo31
  
