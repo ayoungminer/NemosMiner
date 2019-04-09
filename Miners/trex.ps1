@@ -8,7 +8,7 @@ $Commands = [PSCustomObject]@{
     "balloon" = " -i 23" #Balloon
     "bcd" = " -i 24" #BCD
     "bitcore" = " -i 25" #Bitcore
-    "c11" = " -i 23.5" #C11
+    #"c11" = " -i 23.5" #C11
     "dedal" = " -i 23" #Dedal
     "geek" = " -i 23" #Geekcash
     #"hmq1725" = " -i 23" #Hmq1725
@@ -20,15 +20,15 @@ $Commands = [PSCustomObject]@{
     "phi"= "" #Phi
     "polytimos" = " -i 25" #Poly
     "sha256t" = " -i 26" #Sha256t
-    "sha256q"    = " -a sha256q -i 23" #Sha256q
+    "sha256q"    = " -i 23" #Sha256q
     #"skunk" = "" #Skunk
     "sonoa" = " -i 23" #SonoA
     "timetravel" = " -i 25" #Timetravel
     "tribus" = " -i 23" #Tribus
     "x17" = " -i 24" #X17
-    "x16s" = " -i 23.5" #X16s
+    "x16s" = " -i 23" #X16s
     "x16r" = " -i 23" #X16r
-    "x16rt" = " -i 23.5" #X16rt
+    "x16rt" = " -i 23" #X16rt
     "x21s" = " -i 23" #X21s
     "x22i" = " -i 23" #X22i
 }
@@ -39,7 +39,7 @@ $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | 
     [PSCustomObject]@{
         Type = "NVIDIA"
         Path = $Path
-        Arguments = "-b 127.0.0.1:4068 -d $SelGPUCC -a $_ -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_) --quiet -r 10 --cpu-priority 3"
+        Arguments = "-b 127.0.0.1:4068 --api-bind-http 0 -d $SelGPUCC -a $_ -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_) --quiet -r 10 --cpu-priority 3"
         HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Day * .99} # substract 1% devfee
         API = "Ccminer"
         Port = 4068

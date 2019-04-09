@@ -6,6 +6,7 @@ $Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.18.0/Cryp
 $Commands = [PSCustomObject]@{
     "argon2d-dyn" = " --intensity 8 -a argon2d" #Argon2d-dyn
     "allium" = " --intensity 8 -a allium" #Allium
+    "c11" = " --intensity 8 -a c11" #C11
     #"cnv8" = " -a cnv8" #CryptoNightv8
     #"cryptonightheavy" = " -a cryptonightheavy" #CryptoNightHeavy
     #"cryptonightv7" = " -a cryptonightv7" #CryptoNightV7
@@ -28,8 +29,12 @@ $Commands = [PSCustomObject]@{
     #"skein" = " -a skein" #Skein
     "skunk" = " --intensity 8 -a skunk" #Skunk
     #"tribus" = " -a tribus" #Tribus
-    #"x22i" = " -a x22i" #X22i
-    "x22s" = " --intensity 8 -a x21s" #X21s
+    #"x17" = " --intensity 8 -a x17" #X17
+    #"x16s" = " --intensity 8 -a x16s" #X16s
+    #"x16r" = " --intensity 8 -a x16r" #X16r
+    #"x16rt" = " --intensity 8 -a x16rt" #X16rt
+    #"x22i" = " --intensity 8 -a x22i" #X22i
+    #"x21s" = " --intensity 8 -a x21s" #X21s
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
@@ -38,7 +43,7 @@ $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | 
     [PSCustomObject]@{
         Type      = "NVIDIA"
         Path      = $Path
-        Arguments = " --no-nvml --api-type ccminer-tcp --cpu-priority 4 --no-crashreport --no-watchdog -r 1 -R 1 -b 127.0.0.1:4068 -d $SelGPUCC -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_) -q"
+        Arguments = " --no-nvml --api-type ccminer-tcp --cpu-priority 4 --no-watchdog -r 1 -R 1 -b 127.0.0.1:4068 -d $SelGPUCC -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_) -q"
         HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Day * .99} # substract 1% devfee
         API       = "ccminer"
         Port      = 4068

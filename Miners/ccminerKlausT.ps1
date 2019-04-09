@@ -4,8 +4,8 @@ $Path = ".\Bin\NVIDIA-CcminerKlausT\ccminer.exe"
 $Uri = "https://github.com/nemosminer/ccminerKlausTyescrypt/releases/download/v9/ccminerKlausTyescryptv9.7z"
 
 $Commands = [PSCustomObject]@{
-    "lyra2v3" = " -i 24 -d $SelGPUCC" #Lyra2v3
-    "lyra2rev3" = " -i 24 -d $SelGPUCC" #Lyra2rev3
+    #"lyra2v3" = " -i 24 -d $SelGPUCC" #Lyra2v3
+    #"lyra2rev3" = " -i 24 -d $SelGPUCC" #Lyra2rev3
     "neoscrypt" = " -i 17.25 -d $SelGPUCC" #NeoScrypt
     "yescrypt" = " -d $SelGPUCC" #Yescrypt
     "yescryptR8" = " -d $SelGPUCC" #YescryptR8

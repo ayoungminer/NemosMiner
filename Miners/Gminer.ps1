@@ -15,7 +15,7 @@ $Commands = [PSCustomObject]@{
  
 }
 
-$Port = $Variables.NVIDIAMinerAPITCPPort
+$Port = 4068
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
 
 $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | ForEach {
