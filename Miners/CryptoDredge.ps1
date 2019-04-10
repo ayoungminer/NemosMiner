@@ -4,7 +4,7 @@ $Path = ".\Bin\NVIDIA-CryptoDredge\CryptoDredge.exe"
 $Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.18.0/CryptoDredge_0.18.0_cuda_10.0_windows.zip"
 
 $Commands = [PSCustomObject]@{
-    "argon2d-dyn" = " --intensity 8 -a argon2d" #Argon2d-dyn
+    "argon2ddyn" = " --intensity 6 -a argon2d" #Argon2d-dyn
     "allium" = " --intensity 8 -a allium" #Allium
     #"c11" = " --intensity 8 -a c11" #C11
     #"cnv8" = " -a cnv8" #CryptoNightv8
