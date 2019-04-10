@@ -28,7 +28,7 @@ $Commands = [PSCustomObject]@{
     "x17" = " -i 24" #X17
     "x16s" = " -i 23" #X16s
     "x16r" = " -i 23" #X16r
-    "x16rt" = " -i 23" #X16rt
+    "x16rt" = " -i 22.5" #X16rt
     "x21s" = " -i 23" #X21s
     "x22i" = " -i 23" #X22i
 }
