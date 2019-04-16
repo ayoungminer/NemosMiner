@@ -25,6 +25,7 @@ $Commands = [PSCustomObject]@{
     "sonoa" = " -i 23" #SonoA
     "timetravel" = " -i 25" #Timetravel
     "tribus" = " -i 23" #Tribus
+    "veil" = " -i 24" #Veil
     "x17" = " -i 24" #X17
     "x16s" = " -i 23" #X16s
     "x16r" = " -i 23" #X16r
@@ -41,7 +42,7 @@ $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | 
         Path = $Path
         Arguments = "-b 127.0.0.1:4068 --api-bind-http 0 -d $SelGPUCC -a $_ -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_) --quiet -r 10 --cpu-priority 3"
         HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Day * .99} # substract 1% devfee
-        API = "Ccminer"
+        API = "ccminer"
         Port = 4068
         Wrap = $false
         URI = $Uri
