@@ -43,7 +43,7 @@ $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | 
     [PSCustomObject]@{
         Type      = "NVIDIA"
         Path      = $Path
-        Arguments = " --no-nvml --api-type ccminer-tcp --cpu-priority 4 --no-watchdog -r 1 -R 1 -b 127.0.0.1:4068 -d $SelGPUCC -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_) -q"
+        Arguments = " --api-type ccminer-tcp --cpu-priority 4 --no-watchdog -r 1 -R 1 -b 127.0.0.1:4068 -d $SelGPUCC -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_) -q"
         HashRates = [PSCustomObject]@{(Get-Algorithm($_)) = $Stats."$($Name)_$(Get-Algorithm($_))_HashRate".Day * .99} # substract 1% devfee
         API       = "ccminer"
         Port      = 4068
