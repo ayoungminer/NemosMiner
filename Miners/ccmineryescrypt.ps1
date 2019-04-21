@@ -1,6 +1,6 @@
 . .\Include.ps1
 
-$Path = ".\Bin\NVIDIA-Ccmineryescrypt9\ccminer.exe"
+$Path = ".\Bin\NVIDIA-Ccmineryescrypt\ccminer.exe"
 $Uri = "https://github.com/nemosminer/ccminerKlausTyescrypt/releases/download/v9/ccminerKlausTyescryptv9.7z"
 
 $Commands = [PSCustomObject]@{
@@ -9,12 +9,8 @@ $Commands = [PSCustomObject]@{
     "yescryptR16" = " -i 13.25 -d $SelGPUCC" #YescryptR16
     "yescryptR16v2" = " -d $SelGPUCC" #YescryptR16v2
     "yescryptR24" = " -d $SelGPUCC" #YescryptR24
-    "yescryptR32" = " -i 12.49 -d $SelGPUCC" #YescryptR32
+    #"yescryptR32" = " -i 12.49 -d $SelGPUCC" #YescryptR32
 }
-    switch ($_) {
-        "yescryptR32" {$Fee = 0.14} # account for 14% stale shares
-              default {$Fee = 0.00}
-    }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName
 
@@ -24,7 +20,7 @@ $Commands | Get-Member -MemberType NoteProperty | Select -ExpandProperty Name | 
         Type = "NVIDIA"
         Path = $Path
         Arguments = "--cpu-priority 4 -b 4068 -N 2 -R 1 -a $_ -o stratum+tcp://$($Pools.(Get-Algorithm($_)).Host):$($Pools.(Get-Algorithm($_)).Port) -u $($Pools.(Get-Algorithm($_)).User) -p $($Pools.(Get-Algorithm($_)).Pass)$($Commands.$_)"
-        HashRates = [PSCustomObject]@{($Algo) = $Stats."$($Name)_$($Algo)_HashRate".Day * (1 - $Fee)} # account for 14% stale shares yescryptR32
+        HashRates = [PSCustomObject]@{($Algo) = $Stats."$($Name)_$($Algo)_HashRate".Day * (1 - $Fee)} # account for 1% stale shares
         API = "Ccminer"
         Port = 4068
         Wrap = $false
