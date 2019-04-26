@@ -4,7 +4,7 @@ $Path = ".\Bin\NVIDIA-Ccminerverus\ccminer.exe"
 $Uri = "https://nemosminer.com/data/optional/CCMinerVerus-3.3.7z"
 
 $Commands = [PSCustomObject]@{
-     "verushash" = " -a verus -i 18.75 -d $SelGPUCC" #Verus
+     "verushash" = " -a verus -i 18.84 -d $SelGPUCC" #Verus
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName

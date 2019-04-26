@@ -197,6 +197,39 @@
       "Total":"total",
       "Balance":"balance"
    },
+   {
+      "Name":"zergpool",
+      "EarnTrackSupport":"Yes",
+      "PoolUri":"http://www.zergpool.com",
+      "WalletUri":"http://api.zergpool.com:8080/api/walletEx?address=",
+      "StatusUri":"http://api.zergpool.com:8080/api/status",
+      "CurrenciesUri":"http://api.zergpool.com:8080/api/currencies",
+      "PaymentThreshold":0.0025,
+      "Total":"total",
+      "Balance":"balance"
+   },
+   {
+      "Name":"zergpool24hr",
+      "EarnTrackSupport":"Yes",
+      "PoolUri":"http://www.zergpool.com",
+      "WalletUri":"http://api.zergpool.com:8080/api/walletEx?address=",
+      "StatusUri":"http://api.zergpool.com:8080/api/status",
+      "CurrenciesUri":"http://api.zergpool.com:8080/api/currencies",
+      "PaymentThreshold":0.0025,
+      "Total":"total",
+      "Balance":"balance"
+   },
+   {
+      "Name":"zergpoolplus",
+      "EarnTrackSupport":"Yes",
+      "PoolUri":"http://www.zergpool.com",
+      "WalletUri":"http://api.zergpool.com:8080/api/walletEx?address=",
+      "StatusUri":"http://api.zergpool.com:8080/api/status",
+      "CurrenciesUri":"http://api.zergpool.com:8080/api/currencies",
+      "PaymentThreshold":0.0025,
+      "Total":"total",
+      "Balance":"balance"
+   },
    {  
       "Name":"zpool",
       "EarnTrackSupport":"Yes",

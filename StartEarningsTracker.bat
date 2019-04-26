@@ -12,4 +12,4 @@ REM     -ShowRawData = $false
 
 REM		Replace Pool name and Wallet below with your info
 
-powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle Normal -command "&.\EarningsTracker.ps1 -Pool PoolName -Wallet YourWalletAddress 
+powershell -version 5.0 -noexit -executionpolicy bypass -windowstyle Normal -command "&.\EarningsTracker.ps1 -Pool zergpool -Wallet 3FJxLvN1XTjN5zH78YMVDdPSNrTzN44DeB -APIUri http://api.zergpool.com:8080/api/walletEx?address=
