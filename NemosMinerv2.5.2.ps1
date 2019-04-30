@@ -48,7 +48,9 @@ param(
     [Parameter(Mandatory = $false)]
     [String]$UIStyle = "Full", # Light or Full. Defines level of info displayed
     [Parameter(Mandatory = $false)]
-    [Bool]$TrackEarnings = $True # Display earnings information
+    [Bool]$TrackEarnings = $True,# Display earnings information
+    [Parameter(Mandatory = $false)]
+    [String]$ConfigFile = ".\Config\config.json"
 )
 $QuickEditCodeSnippet = @" 
 using System;
@@ -112,6 +114,74 @@ public static bool SetQuickEdit(bool SetEnabled)
 
 "@
 
+Function InitApplication {
+    $Variables | Add-Member -Force @{SourcesHash = @()}
+    $Variables | Add-Member -Force @{ProcessorCount = (Get-WmiObject -class win32_processor).NumberOfLogicalProcessors}
+    
+    if (!(IsLoaded(".\Include.ps1"))) {. .\Include.ps1; RegisterLoaded(".\Include.ps1")}
+    Set-Location (Split-Path $script:MyInvocation.MyCommand.Path)
+
+    $Variables | Add-Member -Force @{ScriptStartDate = (Get-Date)}
+    # GitHub Supporting only TLSv1.2 on feb 22 2018
+    if ([Net.ServicePointManager]::SecurityProtocol -notmatch [Net.SecurityProtocolType]::Tls12) {
+        [Net.ServicePointManager]::SecurityProtocol += [Net.SecurityProtocolType]::Tls12
+    }
+    # Force Culture to en-US
+    $culture = [System.Globalization.CultureInfo]::CreateSpecificCulture("en-US")
+    $culture.NumberFormat.NumberDecimalSeparator = "."
+    $culture.NumberFormat.NumberGroupSeparator = ","
+    [System.Threading.Thread]::CurrentThread.CurrentCulture = $culture
+    Set-Location (Split-Path $script:MyInvocation.MyCommand.Path)
+    #Set process priority to BelowNormal to avoid hash rate drops on systems with weak CPUs
+    (Get-Process -Id $PID).PriorityClass = "BelowNormal"
+
+    Import-Module NetSecurity -ErrorAction SilentlyContinue
+    Import-Module Defender -ErrorAction SilentlyContinue
+    Import-Module "$env:Windir\System32\WindowsPowerShell\v1.0\Modules\NetSecurity\NetSecurity.psd1" -ErrorAction SilentlyContinue
+    Import-Module "$env:Windir\System32\WindowsPowerShell\v1.0\Modules\Defender\Defender.psd1" -ErrorAction SilentlyContinue
+
+    if (Get-Command "Unblock-File" -ErrorAction SilentlyContinue) {Get-ChildItem . -Recurse | Unblock-File}
+    if ((Get-Command "Get-MpPreference" -ErrorAction SilentlyContinue) -and (Get-MpComputerStatus -ErrorAction SilentlyContinue) -and (Get-MpPreference).ExclusionPath -notcontains (Convert-Path .)) {
+        Start-Process (@{desktop = "powershell"; core = "pwsh"}.$PSEdition) "-Command Import-Module '$env:Windir\System32\WindowsPowerShell\v1.0\Modules\Defender\Defender.psd1'; Add-MpPreference -ExclusionPath '$(Convert-Path .)'" -Verb runAs
+    }
+    if ($Proxy -eq "") {$PSDefaultParameterValues.Remove("*:Proxy")}
+    else {$PSDefaultParameterValues["*:Proxy"] = $Proxy}
+    Update-Status("Initializing Variables...")
+    $Variables | Add-Member -Force @{DecayStart = Get-Date}
+    $Variables | Add-Member -Force @{DecayPeriod = 120} #seconds
+    $Variables | Add-Member -Force @{DecayBase = 1 - 0.1} #decimal percentage
+    $Variables | Add-Member -Force @{ActiveMinerPrograms = @()}
+    $Variables | Add-Member -Force @{Miners = @()}
+    #Start the log
+    Start-Transcript -Path ".\Logs\miner.log" -Append -Force
+    #Update stats with missing data and set to today's date/time
+    if (Test-Path "Stats") {Get-ChildItemContent "Stats" | ForEach {$Stat = Set-Stat $_.Name $_.Content.Week}}
+    #Set donation parameters
+    $Variables | Add-Member -Force @{DonateRandom = [PSCustomObject]@{}}
+    $Variables | Add-Member -Force @{LastDonated = (Get-Date).AddDays(-1).AddHours(1)}
+    If ($Config.Donate -lt 3) {$Config.Donate = (0, (3..8)) | Get-Random}
+    $Variables | Add-Member -Force @{WalletBackup = $Config.Wallet}
+    $Variables | Add-Member -Force @{UserNameBackup = $Config.UserName}
+    $Variables | Add-Member -Force @{WorkerNameBackup = $Config.WorkerName}
+    $Variables | Add-Member -Force @{EarningsPool = ""}
+    $Variables | Add-Member -Force @{BrainJobs = @()}
+    $Variables | Add-Member -Force @{EarningsTrackerJobs = @()}
+    $Variables | Add-Member -Force @{Earnings = @{}}
+    
+    $Location = $Config.Location
+ 
+    # Find available TCP Ports
+    $StartPort = 4068
+    $Config.Type | sort | foreach {
+        Update-Status("Finding available TCP Port for $($_)")
+        $Port = Get-FreeTcpPort($StartPort)
+        $Variables | Add-Member -Force @{"$($_)MinerAPITCPPort" = $Port}
+        Update-Status("Miners API Port: $($Port)")
+        $StartPort = $Port + 1
+    }
+    Sleep 2
+}
+
 $QuickEditMode = add-type -TypeDefinition $QuickEditCodeSnippet -Language CSharp
 
 
@@ -165,15 +235,23 @@ $PoolName | foreach {
 # Starts Earnings Tracker Job
 $EarningsTrackerJobs = @()
 $Earnings = @{}
+$StartDelay = 0
 if ($TrackEarnings) {
-    $PoolName | foreach {
+    $PoolName | sort | foreach {
         $Params = @{
             pool             = $_
-            Wallet           = $Wallet
-            Interval         = 10
-            WorkingDirectory = ".\"
+            Wallet           = $Wallet 
+            Interval         = 3
+            WorkingDirectory = "\"
+            StartDelay       = $StartDelay
         }
-        $EarningsTrackerJobs += Start-Job -FilePath .\EarningsTrackerJob.ps1 -ArgumentList $Params
+        $EarningsTrackerJobs = Start-Job -FilePath .\EarningsTrackerJob.ps1 -ArgumentList $Params
+                 If ($EarningsJob) {
+                    $Variables.StatusText = "Starting Earnings Tracker for $($_)"
+                    $EarningsJob | Add-Member -Force @{PoolName = $_}
+                    $Variables.EarningsTrackerJobs += $EarningsJob
+                    rv EarningsJob
+        }
     }
 }
 #Randomly sets donation minutes per day between 0 - 5 minutes if not set

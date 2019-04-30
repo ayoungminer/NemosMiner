@@ -51,7 +51,7 @@ $ProgressPreference = "SilentlyContinue"
 (Get-Process -Id $PID).PriorityClass = "BelowNormal"
 
 $args[0].GetEnumerator() | ForEach-Object { New-Variable -Name $_.Key -Value $_.Value }
-If ($WorkingDirectory) {Set-Location $WorkingDirectory}
+If ($WorkingDirectory) {Set-Location ".\"}
 
 sleep $StartDelay
 
@@ -61,7 +61,7 @@ if (-not $APIUri) {
     }
     catch {$poolapi = Get-content ".\Config\poolapiref.json" | Convertfrom-json}
     if ($poolapi -ne $null) {
-        $poolapi | ConvertTo-json | Out-File ".\Config\poolapiref.json"
+        $poolapi | ConvertTo-json | Out-File "C:\Users\MiningRig\Desktop\NemosMiner\NemosMinerClassic-v2.5.3\Config\poolapiref.json"
         If (($poolapi | ? {$_.Name -eq $pool}).EarnTrackSupport -eq "yes") {
             $APIUri = ($poolapi | ? {$_.Name -eq $pool}).WalletUri
             $PaymentThreshold = ($poolapi | ? {$_.Name -eq $pool}).PaymentThreshold
