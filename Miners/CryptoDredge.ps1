@@ -1,9 +1,11 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-CryptoDredge\CryptoDredge.exe"
-$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.18.0/CryptoDredge_0.18.0_cuda_10.0_windows.zip"
+$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.19.0/CryptoDredge_0.19.0_cuda_10.0_windows.zip"
 
 $Commands = [PSCustomObject]@{
+    "argon2d250"  = " --intensity 8 -a argon2d250" #argon2d250
+    "argon2d4096" = " --intensity 8 -a argon2d4096" #argon2d4096
     "argon2ddyn" = " --intensity 6 -a argon2d" #Argon2d-dyn
     "allium" = " --intensity 8 -a allium" #Allium
     #"c11" = " --intensity 8 -a c11" #C11
@@ -24,7 +26,7 @@ $Commands = [PSCustomObject]@{
     "mtp" = " --intensity 8 -a mtp" #Mtp
     "neoscrypt" = " --intensity 6 -a neoscrypt" #NeoScrypt
     "phi" = " --intensity 8 -a phi" #Phi
-    "phi2" = " --intensity 7 -a phi2" #Phi2
+    "phi2" = " --intensity 8 -a phi2" #Phi2
     "pipe" = " --intensity -a pipe" #Pipe
     #"skein" = " -a skein" #Skein
     "skunk" = " --intensity 8 -a skunk" #Skunk
