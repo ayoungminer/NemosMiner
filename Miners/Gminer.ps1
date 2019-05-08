@@ -5,7 +5,7 @@ $Uri = "https://github.com/develsoftware/GMinerRelease/releases/download/1.41/gm
 
 $Commands = [PSCustomObject]@{
     "beam"         = " --devices $SelGPUDSTM --algo 150_5 --pers auto" #Equihash150
-    #"cuckoocycle"    = " --devices $SelGPUDSTM --algo aeternity --pers auto" #Aeternity
+    "cuckoocycle"    = " --devices $SelGPUDSTM --algo aeternity --pers auto" #Aeternity
     "equihash144"  = " --devices $SelGPUDSTM --algo 144_5 --pers auto" #Equihash144
     "equihash192"  = " --devices $SelGPUDSTM --algo 192_7 --pers auto" #Equihash192
     "equihash-btg" = " --devices $SelGPUDSTM --algo 144_5 --pers BgoldPoW" # Equihash-btg
