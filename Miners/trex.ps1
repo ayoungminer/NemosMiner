@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-trex\t-rex.exe"
-$Uri = "https://github.com/trexminer/T-Rex/releases/download/0.9.2/t-rex-0.9.2-win-cuda10.0.zip"
+$Uri = "https://github.com/trexminer/T-Rex/releases/download/0.10.2/t-rex-0.10.2-win-cuda10.0.zip"
 
 $Commands = [PSCustomObject]@{
     "astralhash" = " -a astralhash -i 23" #Astralhash
@@ -12,7 +12,8 @@ $Commands = [PSCustomObject]@{
     "dedal" = " -a dedal -i 23" #Dedal
     "geek" = " -a geek -i 23" #Geekcash
     #"hmq1725" = " -a hmq1725 -i 23" #Hmq1725
-    "jeonghash"  = " -a jeonghash -i 23" #Jeonghash
+    "jeonghash" = " -a jeonghash -i 23" #Jeonghash
+    "mtp" = " -a mtp -i 23" #MTP 
     "padihash"   = " -a padihash -i 23" #Padihash
     "pawelhash"  = " -a pawelhash -i 23" #Pawelhash
     "polytimos" = " -a polytimos -i 25" #Poly
