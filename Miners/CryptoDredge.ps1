@@ -26,9 +26,8 @@ $Commands = [PSCustomObject]@{
     #"mtp" = " --intensity 8 -a mtp" #Mtp
     "neoscrypt" = " --intensity 6 -a neoscrypt" #NeoScrypt
     "phi" = " --intensity 8 -a phi" #Phi
-    "phi2" = " --intensity 8 -a phi2" #Phi2
+    "phi2" = ",mc=SPDR/AGM --intensity 8 -a phi2" #Phi2
     "pipe" = " --intensity -a pipe" #Pipe
-    #"skein" = " -a skein" #Skein
     "skunk" = " --intensity 8 -a skunk" #Skunk
     #"tribus" = " -a tribus" #Tribus
     #"x17" = " --intensity 8 -a x17" #X17
