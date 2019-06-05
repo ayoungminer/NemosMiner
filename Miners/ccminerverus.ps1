@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-Ccminerverus\ccminer.exe"
-$Uri = "https://nemosminer.com/data/optional/CCMinerVerus-3.3.7z"
+$Uri = "https://github.com/RainbowMiner/miner-binaries/releases/download/v3.4-ccminerverus/ccminerVerus-v3.4.7z"
 
 $Commands = [PSCustomObject]@{
      "verushash" = " -a verus -i 18.84 -d $SelGPUCC" #Verus

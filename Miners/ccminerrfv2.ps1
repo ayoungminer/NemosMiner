@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-ccminerrfv2\ccminer.exe"
-$Uri = "https://github.com/nemosminer/CudaMiner/releases/download/1.0.1/ccminerrfv2.7z"
+$Uri = "https://github.com/RainbowMiner/miner-binaries/releases/download/v1.0.2-ccminerrfv2/ccminerrfv2-1.0.2.7z"
 
 $Commands = [PSCustomObject]@{
      "rfv2" = " -a rfv2" #rfv2

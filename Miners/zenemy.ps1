@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-zenemy\z-enemy.exe"
-$Uri = "https://github.com/ayoungminer/miner-bin/raw/master/zenemy/zenemy.7z"
+$Uri = "https://github.com/RainbowMiner/miner-binaries/releases/download/v2.00-zenemy/z-enemy.2-00-cuda10.0.zip"
 
 $Commands = [PSCustomObject]@{
     "aeriumx" = " -d $SelGPUCC -i 23" #Aolytimos

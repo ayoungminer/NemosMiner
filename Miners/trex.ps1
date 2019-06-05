@@ -30,6 +30,7 @@ $Commands = [PSCustomObject]@{
     "x16rt" = " -a x16rt -i 23" #X16rt
     "x21s" = " -a x21s -i 23" #X21s
     "x22i" = " -a x22i -i 23" #X22i
+    "x25x" = " -a x25x -i 23" #X25x
 }
 
 $Name = (Get-Item $script:MyInvocation.MyCommand.Path).BaseName

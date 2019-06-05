@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-CryptoDredge\CryptoDredge.exe"
-$Uri = "https://github.com/technobyl/CryptoDredge/releases/download/v0.19.1/CryptoDredge_0.19.1_cuda_10.1_windows.zip"
+$Uri = "https://github.com/RainbowMiner/miner-binaries/releases/download/v0.20.1-cryptodredge/CryptoDredge_0.20.1_cuda_10.1_windows.zip"
 
 $Commands = [PSCustomObject]@{
     "argon2d250"  = " --intensity 8 -a argon2d250" #argon2d250
