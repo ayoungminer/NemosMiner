@@ -87,6 +87,7 @@
     "hmq1725":  "HMQ1725",
     "hodl":  "hodl",
     "hodlcoin":  "hodl",
+    "honeycomb":  "Honeycomb",
     "hppcoin":  "Lyra2h",
     "hsr":  "HSR",
     "jackpotcoin":  "JHA",
