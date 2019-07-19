@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-Alexis78\ccminer.exe"
-$Uri = "https://github.com/nemosminer/ccminerAlexis78/releases/download/Alexis78-v1.5/ccminerAlexis78v1.5.7z"
+$Uri = "https://github.com/RainbowMiner/miner-binaries/releases/download/v1.5.1-ccmineralexis/ccminerAlexis78cuda75x64.7z"
 
 $Commands = [PSCustomObject]@{
     #"hsr" = " -N 1 -r 0 -d $SelGPUCC --api-remote" #Hsr
