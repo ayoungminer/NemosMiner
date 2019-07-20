@@ -1,7 +1,7 @@
 . .\Include.ps1
  
 $Path = ".\Bin\NVIDIA-Gminer\miner.exe"
-$Uri = "https://github.com/RainbowMiner/miner-binaries/releases/download/v1.51-gminer/gminer_1_51_windows64.zip"
+$Uri = "https://github.com/RainbowMiner/miner-binaries/releases/download/v1.52-gminer/gminer_1_52_windows64.zip"
 
 $Commands = [PSCustomObject]@{
     "beam"         = " --devices $SelGPUDSTM --algo 150_5 --pers auto" #Equihash150
