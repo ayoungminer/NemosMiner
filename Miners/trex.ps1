@@ -1,7 +1,7 @@
 . .\Include.ps1
 
 $Path = ".\Bin\NVIDIA-trex\t-rex.exe"
-$Uri = "https://github.com/RainbowMiner/miner-binaries/releases/download/v0.12.2-trex/t-rex-0.12.2-win-cuda10.0.zip"
+$Uri = "https://github.com/RainbowMiner/miner-binaries/releases/download/v0.13.0-trex/t-rex-0.13.0-win-cuda10.0.zip"
 
 $Commands = [PSCustomObject]@{
     "astralhash" = " -a astralhash -i 23" #Astralhash

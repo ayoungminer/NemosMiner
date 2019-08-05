@@ -25,7 +25,7 @@ $Commands = [PSCustomObject]@{
     "lyra2vc0ban" = " --intensity 8 -a lyra2vc0ban" #Lyra2vc0banHash
     #"mtp" = " --intensity 8 -a mtp" #Mtp
     "neoscrypt" = " --intensity 6 -a neoscrypt" #NeoScrypt
-    "phi" = " --intensity 8 -a phi" #Phi
+    #"phi" = " --intensity 8 -a phi" #Phi
     "phi2" = ",mc=SPDR/AGM --intensity 8 -a phi2" #Phi2
     "pipe" = " --intensity -a pipe" #Pipe
     "skunk" = " --intensity 8 -a skunk" #Skunk
